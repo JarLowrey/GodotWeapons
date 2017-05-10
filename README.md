@@ -1,9 +1,9 @@
-##Gun Plugin for Godot
+## Gun Plugin for Godot
 
 These two scripts (`addons/Bullet.gd`, `addons/Gun.gd`) can be used to quickly bootstrap guns and physics simulated bullets.
 Check out the examples/ directory for working scenes.
 
-##How To
+## How To
 
 Attach the scripts to your Gun/Bullet scenes and examine the `Script Variables` that appear.
 
@@ -28,26 +28,26 @@ The Bullets can be killed (by calling `free()`) in a variety of ways.
 - Time: killed after a set amount of time, -1 disables
 - Travel Dist: killed after traveling a certain distance (may be removed as Time is similar and more performant), -1 disables
 
-##Common Issues
+## Common Issues
 
 Usually a gun will be placed on/inside a ship, character, etc's body.
 To ensure it does not collide with its overlapping body, you must modify [Collision Layers and Collision Masks](https://godotengine.org/qa/4010/whats-difference-between-collision-layers-collision-masks).
 
-##To Do
+## To Do
 
 - Fix tracking function
 - Enable bullets for path follow in addition to physics
 - Make applicable to 3D
 
-##Known Issues
+## Known Issues
 
 - bullet tracking not working
 
-##License
+## License
 
 MIT License (MIT)
 
-Copyright (c) 2017 James R. Lowrey
+Copyright (c) 2017 James R. Lowrey.com/
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
