@@ -50,10 +50,15 @@ func _ready():
 	
 	_timer_node = Timer.new()
 	add_child(_timer_node)
+	_timer_node.set_wait_time(fire_delay)
+	_timer_node.start()
+	_ammo_left_in_clip = clip_size
 	
 	gun_sprite = get_node("GunSprite")
 	_timer_node.connect("timeout", self, "set_can_fire",[true])
-	call_deferred("setup")
+	
+	if auto_fire:
+		call_deferred("fire")
 	pass
 
 func fire():
@@ -85,3 +90,4 @@ func fire():
 		else:
 			_timer_node.set_wait_time(fire_delay)
 			_timer_node.start()
+

@@ -9,9 +9,13 @@ var target = null
 
 #misc vars
 export var fire_pos_offset = [0,0]
-export var tracking_angle_vel_scalar = 1.0
 export var follow_gun = false
 export var fit_collider_to_sprite = true setget set_fit_collider_to_sprite
+
+#PID controller gain values
+export var PID_Kp = 1000.0
+export var PID_Ki = 100.0
+export var PID_Kd = 1000.0
 
 #scaling change related vars
 export var size_scaling_velocity = [0,0]
@@ -23,6 +27,12 @@ export var kill_viewport_exit = true setget set_kill_viewport_exit
 export var kill_travel_dist = -1 setget set_kill_travel_dist
 export var kill_after_time = -1 setget set_kill_after_time
 
+#PID controller vars for torque value when bullet is tracking an object
+var _prev_error = 0
+var _P =0 
+var _I =0 
+var _D =0
+
 var _traveled_dist = 0
 var _prev_pos = null
 var _vis_notifier = null
@@ -31,6 +41,7 @@ signal bullet_killed
 
 func setup(shooting_gun):
 	gun_shot_from = shooting_gun
+	set_z(min(get_z(),gun_shot_from.get_z()-1)) #ensure behind gun
 	
 	#choose parent
 	var parent = null;
@@ -73,11 +84,25 @@ func _integrate_forces(state):
 	if size_scaling_velocity[0] != 0 and size_scaling_velocity[1] != 0:
 		_scale_bullet()
 
-func _track_target():
-	var angle_btw = get_global_pos().angle_to(target.get_global_pos())
-	var angle_diff = get_global_rot() - angle_btw
+func _get_PID_output(currentError, delta):
+	_P = currentError;
+	_I += _P * delta;
+	_D = (_P - _prev_error) / delta;
+	_prev_error = currentError;
+	   
+	return _P*PID_Kp + _I*PID_Ki + _D*PID_Kd;
+func _track_target(delta):
+	var angle_btw = get_global_pos().angle_to_point(target.get_global_pos()) + PI/2
+	var error = get_global_rot() - angle_btw
+	#deal with angle discontinuity
+	#https://stackoverflow.com/questions/10697844/how-to-deal-with-the-discontinuity-of-yaw-angle-at-180-degree
+	if(error > PI): 
+	   error = error - PI * 2
+	elif(error < -PI):
+	   error = error + PI * 2
 	
-	set_angular_velocity(tracking_angle_vel_scalar * angle_diff)
+	var torque = _get_PID_output(error,delta)
+	set_applied_torque(torque)
 	_set_vel_from_angle(get_global_rot())
 
 func set_fit_collider_to_sprite(val):
@@ -124,7 +149,7 @@ func _fixed_process(delta):
 
 func _process(delta):
 	if target:
-		_track_target()
+		_track_target(delta)
 	pass
 
 func _ready():
