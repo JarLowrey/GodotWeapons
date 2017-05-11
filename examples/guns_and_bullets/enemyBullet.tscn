@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://Gun/Bullet.gd" type="Script" id=1]
+[ext_resource path="res://imgs/laserRed01.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[node name="Bullet" type="RigidBody2D"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 2
+collision/mask = 1
+mode = 0
+mass = 1.0
+friction = 0.0
+bounce = 0.0
+gravity_scale = 0.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 1
+contact_monitor = true
+sleeping = false
+can_sleep = true
+velocity/linear = Vector2( 500, 0 )
+velocity/angular = 0.0
+damp_override/linear = -1.0
+damp_override/angular = -1.0
+script/script = ExtResource( 1 )
+fire_pos_offset = [ 0, 0 ]
+tracking_angle_vel_scalar = 20.0
+follow_gun = false
+fit_collider_to_sprite = true
+size_scaling_velocity = [ 0, 0 ]
+max_size_scale = [ 0, 0 ]
+kill_on_collide = true
+kill_viewport_exit = true
+kill_travel_dist = -1
+kill_after_time = -1
+
+[node name="Sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon" type="CollisionShape2D" parent="."]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+

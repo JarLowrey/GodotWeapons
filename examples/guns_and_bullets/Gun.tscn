@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://Gun/Gun.gd" type="Script" id=1]
+[ext_resource path="res://imgs/gun01.png" type="Texture" id=2]
+
+[node name="Gun" type="Node2D"]
+
+transform/rot = 45.0
+script/script = ExtResource( 1 )
+auto_fire = true
+fire_delay = 0.2
+reload_delay = 1.0
+ammo = -1
+clip_size = 2
+shots = [ "res://src/scenes/Gun/Bullets/Bullet.tscn" ]
+
+[node name="GunSprite" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+
+
