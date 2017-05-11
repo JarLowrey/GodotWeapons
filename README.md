@@ -34,7 +34,7 @@ Attach the scripts to your Gun/Bullet scenes and examine the `Script Variables` 
 #### Scene Requirements
 
 Gun.gd is expecting to be placed upon a Node2D (or Node2D child).
-No additional requirements.
+It requires a Node2D child named "GunSprite".
 
 ### Bullet.gd
 
