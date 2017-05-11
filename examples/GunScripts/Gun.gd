@@ -7,7 +7,7 @@ export var fire_delay = 1.0
 export var reload_delay = 2.0
 export var ammo = -1 setget set_ammo
 export var clip_size = 1 setget set_clip_size
-export var shots = ["res://src/scenes/Gun/Bullets/Bullet.tscn"]
+export var shots = ["res://scenes/guns_and_bullets/Bullet.tscn"]
 
 var _ammo_left_in_clip = 1
 var _timer_node = null

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=1]
 
-[ext_resource path="res://Gun/Bullet.gd" type="Script" id=1]
+[ext_resource path="res://GunScripts/Bullet.gd" type="Script" id=1]
 [ext_resource path="res://imgs/laserRed01.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -33,9 +33,11 @@ damp_override/linear = -1.0
 damp_override/angular = -1.0
 script/script = ExtResource( 1 )
 fire_pos_offset = [ 0, 0 ]
-tracking_angle_vel_scalar = 20.0
 follow_gun = false
 fit_collider_to_sprite = true
+PID_Kp = 1000.0
+PID_Ki = 100.0
+PID_Kd = 1000.0
 size_scaling_velocity = [ 0, 0 ]
 max_size_scale = [ 0, 0 ]
 kill_on_collide = true
