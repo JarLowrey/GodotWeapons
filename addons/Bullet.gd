@@ -55,7 +55,7 @@ func setup(shooting_gun):
 	#set bullet position
 	var offset = Vector2(fire_pos_offset[0], fire_pos_offset[1])
 	if get_parent() == root_node:
-		offset +=gun_shot_from.gun_sprite.get_global_pos()
+		offset +=gun_shot_from.get_node("GunSprite").get_global_pos()
 	set_pos(offset)
 	
 	set_global_rot(gun_shot_from.get_global_rot())
