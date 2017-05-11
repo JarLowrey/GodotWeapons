@@ -1,7 +1,6 @@
 extends Node2D
 
 var can_fire = true setget set_can_fire
-var gun_sprite = null
 
 export var auto_fire = true
 export var fire_delay = 1.0
@@ -54,7 +53,6 @@ func _ready():
 	_timer_node.start()
 	_ammo_left_in_clip = clip_size
 	
-	gun_sprite = get_node("GunSprite")
 	_timer_node.connect("timeout", self, "set_can_fire",[true])
 	
 	if auto_fire:

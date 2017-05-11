@@ -7,31 +7,85 @@ Check out the examples/ directory for working scenes.
 
 Attach the scripts to your Gun/Bullet scenes and examine the `Script Variables` that appear.
 
-Guns can be setup to `auto fire` or can be fired manually.
-They have a `clip`/magazine that must be reload()'ed when depleted.
-After each shot a `Fire Delay` occurs before shooting can occur again, and when the clip is emptied the `Reload Delay` occurs.
-Guns can shot 0, 1, 2 or more bullets, just enter the bullet scene's "res://" location into the Gun's `Shots` array.
-Bullets are fired in the direction the gun is facing.
+### Gun.gd
 
-When bullets are fired, they are offset from the Gun's midpoint via `Fire Pos Offset`, this allows shooting multiple bullets at once (aka a volley) without them all overlapping.
-When tracking a `target`, the `Tracking Angle Vel Scalar` is used to scale angular Velocity.
-`Follow Gun` makes the bullets children of the Gun node instead of root, and thus will move with the Gun.
-Combined with `Size Scaling Velocity` (which stretches the bullet) it can be used to create laser beams.
-Scale will not grow larger than `Max Size Scale`.
-When the bullet is created, you can use `Fit Collider to Sprite` to make the collider polygon perfectly over the bullet sprite.
-CollisionShape2D's are recommended over complex polygons for performance reasons,
+#### Variables
 
-The Bullets can be killed (by calling `free()`) in a variety of ways.
+- `auto_fire` - shoot automatically as soon as `can_fire` is set to true. Disable if gun will be shot manually.
+- `fire_delay` - time span between shots where `can_fire` is false
+- `reload_delay` - time it takes to reload a clip of ammunition
+- `ammo` - max ammo of the weapon, once it hits 0 the weapon cannot fire anymore. set to `-1` for infinite
+- `clip_size` - number of bullets in a clip/magazine. Bullets in the same clip have a `fire_delay` between them before the clip empties and `reload_delay` must be called
+- `shots` - an array of strings that reference bullets scenes. The whole array will be fired every volley
 
-- Collision: killed on first contact, requires the body to enable `Contact Monitor` and `Contacts Reported` >0
-- View port Exit: killed when leaving view port, doesn't work if spawned outside of view port
-- Time: killed after a set amount of time, -1 disables
-- Travel Dist: killed after traveling a certain distance (may be removed as Time is similar and more performant), -1 disables
+#### Functions
+
+- setters - `set_clip_size`, `set_can_fire` (will begin auto firing if it's true), `set_ammo`
+- `reload()` - sets `can_fire` to false, waits for `reload_delay` before shooting again
+- `fire()` - exits if `can_fire` is false. spawns a new bullet scene for every bullet in `shots`. Sets vars up for the next bullet volley.
+
+#### Signals
+
+- `volley_fired(bullets_array)` - all the bullets in `shots` have been created. To connect to bullet signals, call `connect` on each bullet in the passed array.
+- `out_of_ammo()` - ammo has hit 0 and gun cannot be shot until more ammo is added
+- `clip_empty()` - reload() must be called before firing again
+- `can_fire_again()`- gun is ready to shoot
+
+#### Scene Requirements
+
+Gun.gd is expecting to be placed upon a Node2D (or Node2D child).
+No additional requirements.
+
+### Bullet.gd
+
+#### Variables
+
+- `fire_pos_offset` - coordinate offset of bullet's spawn location upon the gun. Useful for placing bullet spawn location on a sprite, and ensuring bullets don't overlap when multiple are fired.
+- `follow_gun` - if true the bullet will be added as a child to the gun, and will move with the gun. Useful with laser beams.
+- `size_scaling_velocity` - added to the bullet's sprite's scale every frame, up to a `max_size_scale`. Again, useful for laser beams
+- `max_size_scale` - see `size_scaling_velocity`
+- `fit_collider_to_sprite` - automatically resizes bullet's polygon to perfectly fit its sprite.
+- `target` - the node that the bullet is targeting/flying towards. Utilizes a [PID controller](https://en.wikipedia.org/wiki/PID_controller) ([ref1](https://forum.unity3d.com/threads/rigidbody-lookat-torque.146625/), [ref2](https://godotengine.org/qa/14826/having-issues-tracking-an-object-with-a-rigidbody)) for targeting calculations (not visible in editor).
+- `PID_Kp` - gain (scalar) multiplied by the proportional (current) angle error
+- `PID_Ki` - gain (scalar) multiplied by the integral (sum of past) angle error
+- `PID_Kd` - gain (scalar) multiplied by the derivative (speed of currently changing) angle error
+- `deleted` - set to true when the object is `kill()` and thus `free()`
+- `kill_on_collide`: killed on first contact, requires the body to enable `Contact Monitor` and `Contacts Reported` >0
+- `kill_viewport_exit`: killed when leaving view port, doesn't always work if spawned outside of view port and never enters the view port
+- `kill_after_time`: killed after a set amount of time, -1 disables
+- `kill_travel_dist`: killed after traveling a certain distance (may be removed as Time is similar and more performant), -1 disables
+
+Notice there is no `speed`.
+Speed is found using the magnitude of your bullet's Linear Velocity (rigid body) property, and is set in the direction the gun was pointing when fired.
+
+#### Functions
+
+- setters - `set_fit_collider_to_sprite`, `set_kill_after_time` , `set_kill_on_collide`, `set_kill_travel_dist`, `set_kill_viewport_exit`
+- `setup(gun_fired_from)` - saves the fun, sets parent node, sets pos on gun, sets velocity, that sort of thing. Must be called when spawning from a gun (done automatically for consumers, shouldn't have to worry about this unless you are extending the classes).
+
+
+#### Signals
+
+- `bullet_killed(self)` - bullet has met some kill condition and has been `free()`'d. Consider releasing some particles and such.
+
+#### Scene Requirements
+
+Bullet.gd is expecting to be placed upon a RigidBody.
+It needs a "CollisionPolygon" child and, if you are using `fit_collider_to_sprite`, a "Sprite" child.
+
 
 ## Common Issues
 
+*Bullets collide with character*:
 Usually a gun will be placed on/inside a ship, character, etc's body.
 To ensure it does not collide with its overlapping body, you must modify [Collision Layers and Collision Masks](https://godotengine.org/qa/4010/whats-difference-between-collision-layers-collision-masks).
+
+*Gun is too boring*:
+Connect particle effects and animations to Gun/bullet signals to juice things up.
+
+*Bullet physics are wonky/weird/bad*:
+Try modifying the params on your bullet's rigidbody scene.
+Turn off gravity, friction, increase speed, etc.
 
 ## To Do
 
