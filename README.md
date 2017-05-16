@@ -58,7 +58,7 @@ Speed is found using the magnitude of your bullet's Linear Velocity (rigid body)
 
 - setters - `set_fit_collider_to_sprite`, `set_kill_after_time` , `set_kill_on_collide`, `set_kill_travel_dist`, `set_kill_viewport_exit`
 - `setup(gun_fired_from)` - saves the fun, sets parent node, sets pos on gun, sets velocity, that sort of thing. Must be called when spawning from a gun (done automatically for consumers, shouldn't have to worry about this unless you are extending the classes).
-- `set_target(target_node, PID_Kp, PID_Ki, PID_Kd)` - sets the node the bullet should track, utilizing its [PID controller](https://en.wikipedia.org/wiki/PID_controller) ([ref1](https://forum.unity3d.com/threads/rigidbody-lookat-torque.146625/), [ref2](https://godotengine.org/qa/14826/having-issues-tracking-an-object-with-a-rigidbody)) for targeting calculations. `PID_Kx` parameters are the gain (scalar) multiplied by different types of angle error (p = proportional/current, i = integral/sum of past d=derivative/speed of change). If negative, these values will not set the class variables (will be ignored).
+- `set_target(target_node, PID_Kp, PID_Ki, PID_Kd)` - sets the node the bullet should track, utilizing its [PID controller](https://en.wikipedia.org/wiki/PID_controller) ([ref1](https://forum.unity3d.com/threads/rigidbody-lookat-torque.146625/), [ref2](https://godotengine.org/qa/14826/having-issues-tracking-an-object-with-a-rigidbody)) for targeting calculations. `PID_K?` parameters are the gain (scalar) multiplied by different types of angle error (p = proportional/current, i = integral/sum of past d=derivative/speed of change). If negative, these values will not set the class variables (will be ignored).
 
 #### Signals
 
@@ -82,6 +82,10 @@ Connect particle effects and animations to Gun/bullet signals to juice things up
 *Bullet physics are wonky/weird/bad*:
 Try modifying the params on your bullet's rigidbody scene.
 Turn off gravity, friction, increase speed, etc.
+
+## Contributing
+
+Always welcome!
 
 ## To Do
 
