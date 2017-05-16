@@ -45,10 +45,6 @@ It requires a Node2D child named "GunSprite".
 - `size_scaling_velocity` - added to the bullet's sprite's scale every frame, up to a `max_size_scale`. Again, useful for laser beams
 - `max_size_scale` - see `size_scaling_velocity`
 - `fit_collider_to_sprite` - automatically resizes bullet's polygon to perfectly fit its sprite.
-- `target` - the node that the bullet is targeting/flying towards. Utilizes a [PID controller](https://en.wikipedia.org/wiki/PID_controller) ([ref1](https://forum.unity3d.com/threads/rigidbody-lookat-torque.146625/), [ref2](https://godotengine.org/qa/14826/having-issues-tracking-an-object-with-a-rigidbody)) for targeting calculations (not visible in editor).
-- `PID_Kp` - gain (scalar) multiplied by the proportional (current) angle error
-- `PID_Ki` - gain (scalar) multiplied by the integral (sum of past) angle error
-- `PID_Kd` - gain (scalar) multiplied by the derivative (speed of currently changing) angle error
 - `deleted` - set to true when the object is `kill()` and thus `free()`
 - `kill_on_collide`: killed on first contact, requires the body to enable `Contact Monitor` and `Contacts Reported` >0
 - `kill_viewport_exit`: killed when leaving view port, doesn't always work if spawned outside of view port and never enters the view port
@@ -62,7 +58,7 @@ Speed is found using the magnitude of your bullet's Linear Velocity (rigid body)
 
 - setters - `set_fit_collider_to_sprite`, `set_kill_after_time` , `set_kill_on_collide`, `set_kill_travel_dist`, `set_kill_viewport_exit`
 - `setup(gun_fired_from)` - saves the fun, sets parent node, sets pos on gun, sets velocity, that sort of thing. Must be called when spawning from a gun (done automatically for consumers, shouldn't have to worry about this unless you are extending the classes).
-
+- `set_target(target_node, PID_Kp, PID_Ki, PID_Kd)` - sets the node the bullet should track, utilizing its [PID controller](https://en.wikipedia.org/wiki/PID_controller) ([ref1](https://forum.unity3d.com/threads/rigidbody-lookat-torque.146625/), [ref2](https://godotengine.org/qa/14826/having-issues-tracking-an-object-with-a-rigidbody)) for targeting calculations. `PID_Kx` parameters are the gain (scalar) multiplied by different types of angle error (p = proportional/current, i = integral/sum of past d=derivative/speed of change). If negative, these values will not set the class variables (will be ignored).
 
 #### Signals
 

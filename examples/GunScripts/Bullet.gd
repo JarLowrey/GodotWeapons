@@ -5,17 +5,12 @@ const sprite_node_name = "Sprite"
 const collider_node_name = "CollisionPolygon"
 
 var deleted = false
-var target = null
+var target = null setget set_target
 
 #misc vars
 export var fire_pos_offset = [0,0]
 export var follow_gun = false
 export var fit_collider_to_sprite = true setget set_fit_collider_to_sprite
-
-#PID controller gain values
-export var PID_Kp = 1000.0
-export var PID_Ki = 100.0
-export var PID_Kd = 1000.0
 
 #scaling change related vars
 export var size_scaling_velocity = [0,0]
@@ -29,9 +24,13 @@ export var kill_after_time = -1 setget set_kill_after_time
 
 #PID controller vars for torque value when bullet is tracking an object
 var _prev_error = 0
-var _P =0 
-var _I =0 
-var _D =0
+var _P = 0 
+var _I = 0 
+var _D = 0
+#PID controller gain values
+var _PID_Kp = 1000.0
+var _PID_Ki = 100.0
+var _PID_Kd = 1000.0
 
 var _traveled_dist = 0
 var _prev_pos = null
@@ -44,7 +43,7 @@ func setup(shooting_gun):
 	set_z(min(get_z(),gun_shot_from.get_z()-1)) #ensure behind gun
 	
 	#choose parent
-	var parent = null;
+	var parent = null
 	var root_node = gun_shot_from.get_node("/root")
 	if follow_gun:
 		parent = gun_shot_from.get_node("ChildBullets")
@@ -85,12 +84,12 @@ func _integrate_forces(state):
 		_scale_bullet()
 
 func _get_PID_output(currentError, delta):
-	_P = currentError;
-	_I += _P * delta;
-	_D = (_P - _prev_error) / delta;
-	_prev_error = currentError;
+	_P = currentError
+	_I += _P * delta
+	_D = (_P - _prev_error) / delta
+	_prev_error = currentError
 	   
-	return _P*PID_Kp + _I*PID_Ki + _D*PID_Kd;
+	return _P*_PID_Kp + _I*_PID_Ki + _D*_PID_Kd
 func _track_target(delta):
 	var angle_btw = get_global_pos().angle_to_point(target.get_global_pos()) + PI/2
 	var error = get_global_rot() - angle_btw
@@ -109,6 +108,14 @@ func set_fit_collider_to_sprite(val):
 	fit_collider_to_sprite = val
 	if fit_collider_to_sprite and has_node(sprite_node_name) and has_node(collider_node_name):
 		resize_to(get_node(sprite_node_name),get_node(collider_node_name))
+func set_target(target_node,PID_Kp = -1,PID_Ki = -1,PID_Kd = -1):
+	target = target_node
+	if (PID_Kp >= 0):
+		_PID_Kp = PID_Kp
+	if (PID_Ki >= 0):
+		_PID_Ki = PID_Ki
+	if (PID_Kd >= 0):
+		_PID_Kd = PID_Kd
 func set_kill_after_time(val):
 	kill_after_time = val
 	if val > 0:

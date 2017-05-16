@@ -7,4 +7,4 @@ func _ready():
 
 func set_targets(bullets):
 	for bullet in bullets:
-		bullet.target = get_node("../enemy")
+		bullet.set_target(get_node("../enemy"))

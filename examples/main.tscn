@@ -4,9 +4,6 @@
 [ext_resource path="res://scenes/tracker.gd" type="Script" id=2]
 [ext_resource path="res://scenes/enemy.tscn" type="PackedScene" id=3]
 
-
-
-
 [node name="Node2D" type="Node2D"]
 
 [node name="good guy" parent="." instance=ExtResource( 1 )]
