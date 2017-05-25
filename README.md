@@ -67,7 +67,7 @@ Speed is found using the magnitude of your bullet's Linear Velocity (rigid body)
 #### Scene Requirements
 
 Bullet.gd is expecting to be placed upon a RigidBody.
-It needs a "CollisionPolygon" child and, if you are using `fit_collider_to_sprite`, a "Sprite" child.
+It needs a CollisionShape2D child named "CollisionPolygon" and, if you are using `fit_collider_to_sprite`, a "Sprite" child.
 
 
 ## Common Issues
