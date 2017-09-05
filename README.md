@@ -1,7 +1,9 @@
 ## Gun Plugin for Godot
 
-These two scripts (`examples/GunScripts/Bullet.gd`, `examples/GunScripts/Gun.gd`) can be used to quickly bootstrap guns and physics simulated bullets.
-Check out the `examples/` directory for working scenes.
+These scripts can be used to quickly bootstrap guns and physics simulated bullets.
+
+
+Check out the [demo](https://github.com/JarLowrey/GodotGunsDemo) for examples and to learn how to consume this API.
 
 ## How To
 
