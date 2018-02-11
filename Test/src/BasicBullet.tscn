@@ -9,7 +9,7 @@ custom_solver_bias = 0.0
 radius = 10.0
 height = 20.0
 
-[node name="BasicBullet" index="0" instance=ExtResource( 1 )]
+[node name="BasicBullet" instance=ExtResource( 1 )]
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="." index="2"]
 

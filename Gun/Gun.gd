@@ -18,7 +18,7 @@ func set_can_fire(val):
 	can_fire = val
 	if val:
 		emit_signal("can_fire_again") 
-		if auto_fire and $MuzzleContainer: # $MuzzleContainer not loaded if called before _ready because of this exported vars default value
+		if auto_fire and has_node("MuzzleContainer"): # $MuzzleContainer not loaded if called before _ready because of this exported vars default value
 			fire()
 
 func reload():
