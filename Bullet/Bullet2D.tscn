@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Bullet/Bullet.gd" type="Script" id=1]
+
+
+[node name="Bullet2D" type="Node2D" index="0"]
+
+script = ExtResource( 1 )
+kill_after_travel_dist = -1
+kill_after_time = false
+kill_on_exit = false
+
+[node name="SelfDestructTimer" type="Timer" parent="." index="0"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="VisibilityNotifier" type="VisibilityNotifier2D" parent="." index="1"]
+
+rect = Rect2( -10, -10, 20, 20 )
+
+

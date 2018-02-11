@@ -1,1 +1,4 @@
-Thumb.db
+.DS_Store
+*~
+.import/
+logs/

@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Gun/Gun.gd" type="Script" id=1]
+
+[node name="Gun2D" type="Node2D"]
+
+script = ExtResource( 1 )
+can_fire = true
+auto_fire = true
+auto_reload = true
+ammo = -1
+clip_size = 1
+
+[node name="ShotDelayTimer" type="Timer" parent="." index="0"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="ReloadDelayTimer" type="Timer" parent="." index="1"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="BulletContainer" type="Node" parent="." index="2"]
+
+[node name="MuzzleContainer" type="Node2D" parent="." index="3"]
+
+
