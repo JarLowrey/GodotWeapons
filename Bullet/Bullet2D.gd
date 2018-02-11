@@ -3,10 +3,9 @@ extends 'res://Bullet/Bullet.gd'
 #private vars
 onready var _prev_pos = self.global_position
 
-func init(dir,pos):
-	.init(dir,pos)
-	self.global_rotation = dir
-	self.global_position = pos
+func _on_ready():
+	self.global_rotation = my_muzzle.global_rotation
+	self.global_position= my_muzzle.global_position
 
 func _physics_process(delta):
 	#increment travel distance if that is a death param

@@ -7,4 +7,6 @@
 script = ExtResource( 1 )
 bullet_scene = null
 
+[node name="BulletContainer" type="Node" parent="." index="0"]
+
 

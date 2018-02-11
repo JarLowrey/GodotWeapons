@@ -25,10 +25,6 @@ wait_time = 1.0
 one_shot = true
 autostart = false
 
-[node name="BulletContainer" type="Node" parent="." index="2"]
-
-_sections_unfolded = [ "Pause" ]
-
-[node name="MuzzleContainer" type="Spatial" parent="." index="3"]
+[node name="MuzzleContainer" type="Spatial" parent="." index="2"]
 
 

@@ -3,8 +3,8 @@ extends Spatial
 #private vars
 onready var _prev_pos = self.global_transform
 
-func init(dir,pos):
-	.init(dir,pos)
+func _on_ready():
+	pass
 
 func _physics_process(delta):
 	#increment travel distance if that is a death param

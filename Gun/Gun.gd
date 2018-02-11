@@ -18,7 +18,7 @@ func set_can_fire(val):
 	can_fire = val
 	if val:
 		emit_signal("can_fire_again") 
-		if auto_fire and has_node("MuzzleContainer"): # $MuzzleContainer not loaded if called before _ready because of this exported vars default value
+		if auto_fire and is_inside_tree(): # $MuzzleContainer not loaded if called before _ready because of this exported vars default value
 			fire()
 
 func reload():
@@ -44,7 +44,7 @@ func fire():
 	var bullets = []
 	for muzzle in $MuzzleContainer.get_children():
 		var bullet = muzzle.bullet_scene.instance()
-		$BulletContainer.add_child(bullet)
+		muzzle.get_node("BulletContainer").add_child(bullet)
 	emit_signal("volley_fired", bullets)
 	
 	#update ammo/clip
