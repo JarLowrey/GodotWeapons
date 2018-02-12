@@ -11,6 +11,8 @@ height = 20.0
 
 [node name="Bullet2D" index="0" instance=ExtResource( 1 )]
 
+kill_after_time = true
+
 [node name="SelfDestructTimer" parent="." index="0"]
 
 wait_time = 0.1
