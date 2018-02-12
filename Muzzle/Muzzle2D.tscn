@@ -5,8 +5,11 @@
 [node name="Muzzle2D" type="Position2D"]
 
 script = ExtResource( 1 )
+_sections_unfolded = [ "Z Index" ]
 bullet_scene = null
 
 [node name="BulletContainer" type="Node" parent="." index="0"]
+
+_sections_unfolded = [ "Pause" ]
 
 

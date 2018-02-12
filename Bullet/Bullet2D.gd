@@ -6,6 +6,7 @@ var speed = 1500
 var _vel = Vector2()
 
 func init_inst():
+	self.z_index = my_gun.z_index - 1
 	self.global_rotation = my_muzzle.global_rotation
 	self.global_position = my_muzzle.global_position
 	_vel = Vector2(speed,0).rotated(self.global_rotation)

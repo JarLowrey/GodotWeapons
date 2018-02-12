@@ -9,9 +9,11 @@ custom_solver_bias = 0.0
 radius = 10.0
 height = 20.0
 
-[node name="Bullet2D" instance=ExtResource( 1 )]
+[node name="Bullet2D" index="0" instance=ExtResource( 1 )]
 
-kill_on_exit = true
+[node name="SelfDestructTimer" parent="." index="0"]
+
+wait_time = 0.1
 
 [node name="Sprite" type="Sprite" parent="." index="2"]
 
