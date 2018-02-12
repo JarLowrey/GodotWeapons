@@ -9,6 +9,7 @@ export var kill_on_exit = true setget set_kill_on_viewport_exit
 export var kill_after_travel_dist = -1
 
 var traveled_dist = 0 #must be updated in 2d/3d children physics_process
+var _is_killed = false
 
 signal bullet_killed
 
@@ -44,4 +45,10 @@ func set_kill_after_time(val):
 
 func kill(arg=null):
 	emit_signal("bullet_killed",self)
+	
+	#ensure object is not killed more than once
+	set_kill_after_time(false)
+	set_kill_on_viewport_exit(false)
+	kill_after_travel_dist = -1
+	
 	queue_free()

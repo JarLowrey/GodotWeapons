@@ -5,7 +5,7 @@ onready var _prev_pos = self.global_position
 var speed = 1500
 var _vel = Vector2()
 
-func init_inst():
+func fired():
 	self.z_index = my_gun.z_index - 1
 	self.global_rotation = my_muzzle.global_rotation
 	self.global_position = my_muzzle.global_position

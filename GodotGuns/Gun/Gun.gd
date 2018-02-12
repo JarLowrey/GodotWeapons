@@ -45,7 +45,8 @@ func fire():
 	for muzzle in $MuzzleContainer.get_children():
 		var bullet = muzzle.bullet_scene.instance()
 		muzzle.get_node("BulletContainer").add_child(bullet)
-		bullet.init_inst()
+		bullet.fired()
+		bullets.append(bullet)
 	emit_signal("volley_fired", bullets)
 	
 	#update ammo/clip
