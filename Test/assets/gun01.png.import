@@ -7,10 +7,10 @@ path="res://.import/gun01.png-544eadd6c0eeec77e9be46a1b742c661.stex"
 [deps]
 
 source_file="res://Test/assets/gun01.png"
-source_md5="1dd1225a214abfb4d51b75f881c228db"
+source_md5="70d9b1f061915fcb830acdecdde83d1f"
 
 dest_files=[ "res://.import/gun01.png-544eadd6c0eeec77e9be46a1b742c661.stex" ]
-dest_md5="e7f709003a9ee424617e3b1e455fc63a"
+dest_md5="0236d183f355bc41856f3a05d553c61b"
 
 [params]
 
