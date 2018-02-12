@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Muzzle/Muzzle.gd" type="Script" id=1]
+[ext_resource path="res://GodotGuns/Muzzle/Muzzle.gd" type="Script" id=1]
 
-[node name="Muzzle3D" type="Position3D"]
+[node name="Muzzle3D" type="Position3D" index="0"]
 
 script = ExtResource( 1 )
 bullet_scene = null

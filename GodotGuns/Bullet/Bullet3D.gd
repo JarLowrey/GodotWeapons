@@ -1,4 +1,4 @@
-extends Spatial
+extends 'res://GodotGuns/Bullet/Bullet.gd'
 
 #private vars
 onready var _prev_pos = self.global_transform

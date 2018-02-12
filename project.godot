@@ -11,4 +11,4 @@ config_version=3
 [application]
 
 config/name="GodotGuns"
-run/main_scene="res://Test/src/2dTest.tscn"
+run/main_scene="res://GodotGunsTest/src/2dTest.tscn"
