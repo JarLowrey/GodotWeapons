@@ -2,11 +2,11 @@
 
 [ext_resource path="res://Bullet/Bullet2D.gd" type="Script" id=1]
 
-[node name="Bullet2D" type="Node2D"]
+[node name="Bullet2D" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 kill_after_time = false
-kill_on_exit = false
+kill_on_exit = true
 kill_after_travel_dist = -1
 
 [node name="SelfDestructTimer" type="Timer" parent="." index="0"]

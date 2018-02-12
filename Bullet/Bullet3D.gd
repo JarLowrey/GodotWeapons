@@ -3,7 +3,7 @@ extends Spatial
 #private vars
 onready var _prev_pos = self.global_transform
 
-func _on_ready():
+func init_inst():
 	pass
 
 func _physics_process(delta):

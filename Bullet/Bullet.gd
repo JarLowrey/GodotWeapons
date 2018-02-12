@@ -5,7 +5,7 @@ onready var my_gun = get_node("../../../..")
 
 #death/kill/free() related vars
 export var kill_after_time = false
-export var kill_on_exit = false setget set_kill_on_viewport_exit
+export var kill_on_exit = true setget set_kill_on_viewport_exit
 export var kill_after_travel_dist = -1
 
 var traveled_dist = 0 #must be updated in 2d/3d children physics_process
@@ -18,9 +18,6 @@ func _on_ready():
 		$SelfDestructTimer.start()
 
 func _physics_process(delta):
-	if has_method('move'): 
-		move()
-	
 	if kill_after_travel_dist > 0 and traveled_dist >= kill_after_travel_dist:
 		kill()
 
