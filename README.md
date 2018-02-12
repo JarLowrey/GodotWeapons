@@ -1,7 +1,10 @@
 ## Gun Plugin for Godot
 
-These scripts can be used to quickly bootstrap guns and physics simulated bullets.
+These scripts provide a simple scaffolding to bootstrap guns and bullets in Godot 3. Inherit Gun/Bullet 2D/3D to begin.
 
+Currently redesigning.
+
+<!--
 
 Check out the [demo](https://github.com/JarLowrey/GodotGunsDemo) for examples and to learn how to consume this API.
 
@@ -85,14 +88,11 @@ Connect particle effects and animations to Gun/bullet signals to juice things up
 Try modifying the params on your bullet's rigidbody scene.
 Turn off gravity, friction, increase speed, etc.
 
+-->
+
 ## Contributing
 
 Always welcome!
-
-## To Do
-
-- Enable bullets for path follow in addition to physics
-- Make applicable to 3D
 
 
 ## License
