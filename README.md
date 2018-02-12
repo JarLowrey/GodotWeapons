@@ -1,6 +1,6 @@
 ## Gun Plugin for Godot
 
-These scripts provide a simple scaffolding to bootstrap guns and bullets in Godot 3. Inherit Gun/Bullet 2D/3D to begin.
+These scripts provide a simple scaffolding to bootstrap guns and bullets in Godot 3. Look to `Test/` to see how to use the API.
 
 Currently redesigning.
 
