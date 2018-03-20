@@ -48,7 +48,13 @@ func fire():
 		#add bullet to scene
 		var bullet_container = muzzle
 		if bullet.make_child_of_root:
-			bullet_container = get_node("/root")
+			#use a separate container to keep the remote inspector pretty
+			if get_node("/root").has_node("bullet_container"):
+				bullet_container = get_node("/root/bullet_container")
+			else:
+				bullet_container = Node.new() #add the container if it doesn't exist
+				bullet_container.name = "bullet_container"
+				get_node("/root").add_child(bullet_container)
 		bullet_container.add_child(bullet)
 		
 		#init bullet props
