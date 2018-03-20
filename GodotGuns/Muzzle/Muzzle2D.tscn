@@ -2,14 +2,10 @@
 
 [ext_resource path="res://GodotGuns/Muzzle/Muzzle.gd" type="Script" id=1]
 
-[node name="Muzzle2D" type="Position2D"]
+[node name="Muzzle2D" type="Position2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Z Index" ]
 bullet_scene = null
-
-[node name="BulletContainer" type="Node" parent="." index="0"]
-
-_sections_unfolded = [ "Pause" ]
 
 

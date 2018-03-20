@@ -2,11 +2,9 @@
 
 [ext_resource path="res://GodotGuns/Muzzle/Muzzle.gd" type="Script" id=1]
 
-[node name="Muzzle3D" type="Position3D" index="0"]
+[node name="Muzzle3D" type="Position3D"]
 
 script = ExtResource( 1 )
 bullet_scene = null
-
-[node name="BulletContainer" type="Node" parent="." index="0"]
 
 

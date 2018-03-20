@@ -44,8 +44,18 @@ func fire():
 	var bullets = []
 	for muzzle in $MuzzleContainer.get_children():
 		var bullet = muzzle.bullet_scene.instance()
-		muzzle.get_node("BulletContainer").add_child(bullet)
+		
+		#add bullet to scene
+		var bullet_container = muzzle
+		if bullet.make_child_of_root:
+			bullet_container = get_node("/root")
+		bullet_container.add_child(bullet)
+		
+		#init bullet props
+		bullet.my_gun = self
+		bullet.my_muzzle = muzzle
 		bullet.fired()
+		
 		bullets.append(bullet)
 	emit_signal("volley_fired", bullets)
 	
