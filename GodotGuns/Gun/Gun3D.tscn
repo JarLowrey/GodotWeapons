@@ -2,8 +2,7 @@
 
 [ext_resource path="res://GodotGuns/Gun/Gun3D.gd" type="Script" id=1]
 
-
-[node name="Gun3D" type="Spatial" index="0"]
+[node name="Gun3D" type="Spatial"]
 
 script = ExtResource( 1 )
 can_fire = true
@@ -11,6 +10,8 @@ auto_fire = true
 auto_reload = true
 ammo = -1
 clip_size = 1
+reload_delay = 1.0
+shot_delay = 1.0
 
 [node name="ShotDelayTimer" type="Timer" parent="." index="0"]
 

@@ -27,11 +27,11 @@ func _physics_process(delta):
 func set_kill_on_viewport_exit(val):
 	kill_on_exit = val
 	if is_inside_tree():
-		var is_cntd = $VisibilityNotifier.is_connected("screen_exited",self,"queue_free")
-		if val:
-			if not is_cntd:
+		var is_connected_already = $VisibilityNotifier.is_connected("screen_exited",self,"queue_free")
+		if kill_on_exit:
+			if not is_connected_already:
 				$VisibilityNotifier.connect("screen_exited",self,"queue_free")
-		elif is_cntd:
+		elif is_connected_already:
 			$VisibilityNotifier.disconnect("screen_exited",self,"queue_free")
 
 func set_kill_after_time(val):

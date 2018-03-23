@@ -2,10 +2,12 @@ extends Node
 
 export var can_fire = true setget set_can_fire
 
-export var auto_fire = true
+export var auto_fire = true setget set_auto_fire
 export var auto_reload = true
 export var ammo = -1
-export var clip_size = 1
+export var clip_size = 1 setget set_clip_size
+export var reload_delay = 1.0 setget set_reload_delay
+export var shot_delay = 1.0 setget set_shot_delay
 
 var _clip_ammo_remaining = 1
 
@@ -14,6 +16,19 @@ signal out_of_ammo
 signal clip_empty
 signal can_fire_again
 
+func set_clip_size(val):
+	clip_size = val
+	_clip_ammo_remaining = clip_size
+func set_reload_delay(val):
+	reload_delay = val
+	if is_inside_tree():
+		$ReloadDelayTimer.wait_time = reload_delay
+
+func set_shot_delay(val):
+	shot_delay = val
+	if is_inside_tree():
+		$ShotDelayTimer.wait_time = shot_delay
+
 func set_can_fire(val):
 	can_fire = val
 	if val:
@@ -21,14 +36,20 @@ func set_can_fire(val):
 		if auto_fire and is_inside_tree(): # $MuzzleContainer not loaded if called before _ready because of this exported vars default value
 			fire()
 
+func set_auto_fire(val):
+	auto_fire = val
+	if is_inside_tree():
+		fire()
+
 func reload():
+	set_can_fire(false)
 	_clip_ammo_remaining = clip_size
-	can_fire = false
 	$ReloadDelayTimer.start()
+	$ShotDelayTimer.stop()
 
 func _ready():
-	_clip_ammo_remaining = clip_size
-	
+	set_reload_delay(reload_delay)
+	set_shot_delay(shot_delay)
 	$ShotDelayTimer.connect("timeout", self, "set_can_fire",[true])
 	$ReloadDelayTimer.connect("timeout", self, "set_can_fire",[true])
 	
