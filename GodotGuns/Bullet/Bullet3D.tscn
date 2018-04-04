@@ -5,9 +5,10 @@
 [node name="Bullet3D" type="Spatial"]
 
 script = ExtResource( 1 )
-kill_after_time = false
+make_child_of_root = true
+kill_after_time = -1.0
 kill_on_exit = true
-kill_after_travel_dist = -1
+kill_after_travel_dist = -1.0
 
 [node name="SelfDestructTimer" type="Timer" parent="." index="0"]
 
