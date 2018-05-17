@@ -4,6 +4,7 @@ extends 'res://GodotGuns/Bullet/Bullet.gd'
 onready var _prev_pos = self.global_position
 
 func fired():
+	.fired()
 	self.z_index = my_gun.z_index - 1
 	self.global_rotation = my_muzzle.global_rotation
 	self.global_position = my_muzzle.global_position

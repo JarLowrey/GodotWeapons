@@ -1,17 +1,21 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://GodotGuns/Gun/Gun2D.gd" type="Script" id=1]
+[ext_resource path="res://assets/imgs/UI/icons8/icons8-lightning-bolt-128.png" type="Texture" id=2]
 
 [node name="Gun2D" type="Node2D"]
 
 script = ExtResource( 1 )
+energy_load = 10.0
+operating_capacity = 1.0
+display_icon = ExtResource( 2 )
+title = "Reactor"
+description = "Generates and distributes power"
 can_fire = true
 auto_fire = true
 auto_reload = true
 ammo = -1
-clip_size = 1
-reload_delay = 1.0
-shot_delay = 1.0
+clip_size = -1
 
 [node name="ShotDelayTimer" type="Timer" parent="." index="0"]
 
@@ -27,6 +31,8 @@ wait_time = 1.0
 one_shot = false
 autostart = false
 
-[node name="MuzzleContainer" type="Node2D" parent="." index="2"]
+[node name="Muzzle" type="Position2D" parent="." index="2"]
+
+[node name="BulletsLocal" type="Node2D" parent="." index="3"]
 
 

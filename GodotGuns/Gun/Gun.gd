@@ -1,17 +1,18 @@
-extends Node
+extends 'res://src/EntityComponents/EnergyUser.gd'
 
 export var can_fire = true setget set_can_fire
+
+#export(PackedScene) var bullet_scene = null
 
 export var auto_fire = true setget set_auto_fire
 export var auto_reload = true
 export var ammo = -1
-export var clip_size = 1 setget set_clip_size
-export var reload_delay = 1.0 setget set_reload_delay
-export var shot_delay = 1.0 setget set_shot_delay
+export var clip_size = -1 setget set_clip_size
 
 var _clip_ammo_remaining = 1
+#var _bullet_pool = []
 
-signal volley_fired
+signal fired
 signal out_of_ammo
 signal clip_empty
 signal can_fire_again
@@ -19,26 +20,16 @@ signal can_fire_again
 func set_clip_size(val):
 	clip_size = val
 	_clip_ammo_remaining = clip_size
-func set_reload_delay(val):
-	reload_delay = val
-	if is_inside_tree():
-		$ReloadDelayTimer.wait_time = reload_delay
-
-func set_shot_delay(val):
-	shot_delay = val
-	if is_inside_tree():
-		$ShotDelayTimer.wait_time = shot_delay
-
 func set_can_fire(val):
 	can_fire = val
-	if val:
+	if can_fire:
 		emit_signal("can_fire_again") 
-		if auto_fire and is_inside_tree(): # $MuzzleContainer not loaded if called before _ready because of this exported vars default value
+		if auto_fire and is_inside_tree():
 			fire()
 
 func set_auto_fire(val):
 	auto_fire = val
-	if is_inside_tree():
+	if auto_fire and can_fire and is_inside_tree(): #if cant fire right now, will fire when timer finishes and can_fire is set to true
 		fire()
 
 func reload():
@@ -48,43 +39,50 @@ func reload():
 	$ShotDelayTimer.stop()
 
 func _ready():
-	set_reload_delay(reload_delay)
-	set_shot_delay(shot_delay)
 	$ShotDelayTimer.connect("timeout", self, "set_can_fire",[true])
 	$ReloadDelayTimer.connect("timeout", self, "set_can_fire",[true])
 	
 	if auto_fire:
 		call_deferred("fire")
 
+func _add_bullet_to_scene_tree(bullet):
+	#add bullet to scene
+	var bullet_container = $BulletsLocal 
+	if not bullet.use_local_coordinates:
+		#use a separate container to keep the remote inspector pretty
+		#BulletsWorld cannot be a child of Gun, or else all bullets will be deleted along with Gun
+		var name = "BulletsContainerWorld"
+		if get_node("/root").has_node(name):
+			bullet_container = get_node("/root/" + name)
+		else:
+			bullet_container = Node.new() #add the container if it doesn't exist
+			bullet_container.name = name
+			get_node("/root").add_child(bullet_container)
+	bullet_container.add_child(bullet)
+
 func fire():
-	if(!can_fire):
-		$ShotDelayTimer.start()
-		return 
-	
 	#fire bullets
-	var bullets = []
-	for muzzle in $MuzzleContainer.get_children():
-		var bullet = muzzle.bullet_scene.instance()
-		
-		#add bullet to scene
-		var bullet_container = muzzle
-		if bullet.make_child_of_root:
-			#use a separate container to keep the remote inspector pretty
-			if get_node("/root").has_node("bullet_container"):
-				bullet_container = get_node("/root/bullet_container")
-			else:
-				bullet_container = Node.new() #add the container if it doesn't exist
-				bullet_container.name = "bullet_container"
-				get_node("/root").add_child(bullet_container)
-		bullet_container.add_child(bullet)
-		
-		#init bullet props
-		bullet.my_gun = self
-		bullet.my_muzzle = muzzle
-		bullet.fired()
-		
-		bullets.append(bullet)
-	emit_signal("volley_fired", bullets)
+	var bullets = get_bullets() #needs to be implemented in a child script
+	
+	if typeof(bullets) != TYPE_ARRAY:
+		bullets = [bullets]
+#	# remove bullets from pool
+#	var bullet
+#	if _bullet_pool.size() == 0:
+#		bullet = bullet_scene.instance()
+#	else:
+#		print("AS")
+#		bullet = _bullet_pool.pop_front()
+	
+	#init bullet props
+	for bullet in bullets:
+		if "my_gun" in bullet:
+			bullet.my_gun = self
+		if "my_muzzle" in bullet:
+			bullet.my_muzzle = $Muzzle
+		if bullet.has_method("fired"):
+			bullet.fired()
+	emit_signal("fired",bullets)
 	
 	#update ammo/clip
 	set_can_fire(false)
@@ -93,9 +91,10 @@ func fire():
 	if ammo > 0:
 		ammo -= 1
 	
-	#prepare to fire again	
+	#prepare to fire again
 	if ammo==0:
 		emit_signal("out_of_ammo")
+		$ShotDelayTimer.stop()
 	else:
 		if _clip_ammo_remaining == 0:
 			emit_signal("clip_empty")
@@ -103,3 +102,8 @@ func fire():
 				reload()
 		else:
 			$ShotDelayTimer.start()
+	
+	return bullets
+
+#func add_to_bullet_pool(bullet):
+#	_bullet_pool.append(bullet)
