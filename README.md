@@ -4,6 +4,8 @@ These scripts provide a simple scaffolding to bootstrap guns and bullets in Godo
 
 Currently redesigning.
 
+See [state machine](http://www.plantuml.com/plantuml/png/bLJHYjim47pNLsoXS4uXvVfQpi4cRKFWsXvre0-b2DNQN0Io5AmrH_hrjImxjaXLw8knPcTMi-DD2aUYfQxHiBFIqgupZf4YZVCPAXA4y5dK9sMGCJSSzrBZ-Ff9jIZ7z_98s5OdIrjhjRGl1XuUwfDLDMusIyetr5P8PPwtMftJt8WsOilk8_InETE5iHzlVi9wlGdU_CEVuXxm7ehoQS-tvUCZj4E5rpsUhQw2C4z4FFP8jW9X971b1W6yok6U1QeNHQxOykJBjxdu_j_B_G7EmZbqiU8_R4DsRh4HrFNe1T185rc15w5enQBharU8ZYmFtQDPy_m-qS5drWkDfI3sGK62EyKw4-CyavU4p-kLJMCXzxcpoFgSS0IdeauoqpCbDEdP66CJLbJxtPSoB97CXYV_rMcDv5Ot91y5ns7UJ1sXUFfQ7PRVOQ7mkr31CzBKBRiMWoxajSxXtOn7_K8jpdBXPVXhuDEsZUDcVg4ugGPNiN1AkOAxrw7m0RMu77fc-_OgkWE7jJNInU9RQtc8mgdV6F-SRWowllXNUx5gTkVnVtjZOUFccsn7t1wv3vGnLg2HNQF_0000)
+
 <!--
 
 Check out the [demo](https://github.com/JarLowrey/GodotGunsDemo) for examples and to learn how to consume this API.

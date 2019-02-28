@@ -6,9 +6,14 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=3
+config_version=4
+
+_global_script_classes=[  ]
+_global_script_class_icons={
+
+}
 
 [application]
 
 config/name="GodotGuns"
-run/main_scene="res://GodotGunsTest/src/2dTest.tscn"
+run/main_scene="res://GodotGunsTest/src/testers/2D_Test.tscn"

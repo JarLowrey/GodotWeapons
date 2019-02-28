@@ -1,0 +1,45 @@
+@startuml GodotGuns
+title GodotGuns State Machine
+
+state Idle
+state Fired
+state AfterShotCooldown <<choice>>
+state AfterReloadingClipCooldown <<choice>>
+state ReloadingClip
+state ShotCooldown
+state Empty
+
+[*] --> Idle
+Idle --> ReloadingClip : @API_CALL reload_clip()
+Idle --> Fired : @API_CALL fire() and _in_clip != 0
+Fired --> ShotCooldown
+
+ShotCooldown --> AfterShotCooldown : @WAIT passes
+ShotCooldown --> ReloadingClip : @API_CALL reload_clip() (prematurely ends ShotCooldown wait)
+AfterShotCooldown --> ReloadingClip : auto_reload and _in_clip==0
+AfterShotCooldown --> Idle : not auto_fire 
+AfterShotCooldown --> Fired : auto_fire and _in_clip !=0
+AfterShotCooldown -->  Empty : ammo == 0
+
+ReloadingClip --> AfterReloadingClipCooldown : @WAIT passes
+AfterReloadingClipCooldown --> Idle : not auto_fire
+AfterReloadingClipCooldown --> Fired : auto_fire
+
+
+Fired : @SIGNAL fired(fired_bullets)
+Fired : @SIGNAL clip_empty (if @POST _in_clip==0)
+Fired : @CALLS get_bullets()
+Fired : @POST ammo -= 1
+Fired : @POST _in_clip -= 1
+
+ReloadingClip : @SIGNAL start_reload_cooldown(wait_time)
+ReloadingClip : @WAITS '$ReloadDelayTimer.wait_time' seconds
+ReloadingClip : @POST _in_clip = clip_size
+
+ShotCooldown : @SIGNAL start_shot_cooldown(wait_time)
+ShotCooldown : @WAITS '$ShotDelayTimer.wait_time' seconds
+
+Empty : @SIGNAL out_of_ammo
+
+
+@enduml

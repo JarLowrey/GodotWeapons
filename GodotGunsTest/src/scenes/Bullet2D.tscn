@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://GodotGuns/Bullet/SelfDestructingBullet.gd" type="Script" id=1]
+[ext_resource path="res://GodotGunsTest/assets/laserBlue01.png" type="Texture" id=2]
+
+[node name="SelfDestructingBullet" type="RigidBody2D"]
+script = ExtResource( 1 )
+
+[node name="SelfDestructTimer" type="Timer" parent="."]
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
