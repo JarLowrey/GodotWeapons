@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/Weapon.cs" type="Script" id=1]
+
+[node name="Weapon" type="Node"]
+script = ExtResource( 1 )
+
+[node name="AttackRecoveryTimer" type="Timer" parent="."]
