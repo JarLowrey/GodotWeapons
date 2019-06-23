@@ -1,5 +1,7 @@
+Not stable - currently re-writing
+
 ## Weapon Plugin for Godot
 
-These scripts provide a scaffolding to bootstrap guns and bullets in Godot 3. Look to `Test/` to see how to use the API.
+This project provies a scaffolding to bootstrap weapons in Godot 3.1
 
-Not stable - currently re-writing
+Look to `Test/` to see how to use the API.
