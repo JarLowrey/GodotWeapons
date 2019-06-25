@@ -2,8 +2,7 @@
 
 [ext_resource path="res://src/Components/ActionWithCooldown/ActionWithCooldown.gd" type="Script" id=1]
 
-
-
-
-[node name="ActionWithCooldown" type="Timer"]
+[node name="ActionWithCooldown" type="Node"]
 script = ExtResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
