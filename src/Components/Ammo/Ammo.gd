@@ -1,4 +1,4 @@
-extends Node
+extends WeaponComponentParent
 
 signal emptied
 signal decremented
