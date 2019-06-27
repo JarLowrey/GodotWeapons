@@ -2,11 +2,11 @@ extends "../WeaponComponentParent.gd"
 
 export var cooldown_delay = 1.0 setget _set_cooldown_delay
 
-signal began
-signal ended
-signal cancelled
-signal premature_end_attempt
-signal premature_start_attempt
+signal began()
+signal ended()
+signal cancelled()
+signal premature_end_attempt()
+signal premature_start_attempt()
 
 var is_in_cooldown = false
 var is_acting = false

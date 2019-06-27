@@ -1,4 +1,4 @@
-extends Node
+extends "../WeaponComponentParent.gd"
 
 var current_attack_in_burst = 0
 export var attacks_in_burst = 1

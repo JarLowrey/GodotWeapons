@@ -1,4 +1,4 @@
-extends WeaponComponentParent
+extends "../WeaponComponentParent.gd"
 
 func _ready():
 	call_deferred("begin_auto_attack")

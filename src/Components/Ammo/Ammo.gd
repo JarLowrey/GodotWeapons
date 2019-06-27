@@ -1,7 +1,7 @@
-extends WeaponComponentParent
+extends "../WeaponComponentParent.gd"
 
-signal emptied
-signal decremented
+signal emptied()
+signal decremented(amt_left)
 
 export var max_amount = 1
 var current_amount = 1
@@ -14,6 +14,6 @@ func _ready():
 func decrement():
 	if current_amount > 0:
 		current_amount -= 1
-		emit_signal("decremented")
+		emit_signal("decremented",current_amount)
 		if current_amount == 0:
 			emit_signal("emptied")

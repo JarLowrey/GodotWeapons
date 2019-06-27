@@ -4,7 +4,8 @@
 [ext_resource path="res://src/Components/Burst/Burst.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Components/AutoAttack/AutoAttack.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Components/Recoil/Recoil2D.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/Components/BulletSpawner/BulletSpawner2D.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/Components/BulletSpawner/BulletSpawner.tscn" type="PackedScene" id=5]
+
 
 [node name="World" type="Node2D"]
 

@@ -1,7 +1,7 @@
-extends ActionWithCooldown
+extends "../ActionWithCooldown/ActionWithCooldown.gd"
 
-signal emptied
-signal decremented
+signal emptied()
+signal decremented(amt_left)
 
 export var size = 1
 export var auto_reload = false
@@ -13,7 +13,7 @@ func _ready():
 
 func _decrement():
 	if _attacks_left_in_mag > 0:
-		_attacks_left_in_mag --
+		_attacks_left_in_mag-=1
 		emit_signal("decremented",_attacks_left_in_mag)
 		if _attacks_left_in_mag == 0:
 			emit_signal("emptied")
