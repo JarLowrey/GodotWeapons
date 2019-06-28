@@ -8,9 +8,62 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node",
+"class": "GDWeaponsActionWithCooldown",
+"language": "GDScript",
+"path": "res://src/Util/ActionWithCooldown/ActionWithCooldown.gd"
+}, {
+"base": "Node",
+"class": "GDWeaponsAmmo",
+"language": "GDScript",
+"path": "res://src/Components/Ammo/Ammo.gd"
+}, {
+"base": "Node",
+"class": "GDWeaponsAutoAttack",
+"language": "GDScript",
+"path": "res://src/Components/AutoAttack/AutoAttack.gd"
+}, {
+"base": "Node",
+"class": "GDWeaponsBulletSpawner",
+"language": "GDScript",
+"path": "res://src/Components/BulletSpawner/BulletSpawner.gd"
+}, {
+"base": "Node",
+"class": "GDWeaponsBurst",
+"language": "GDScript",
+"path": "res://src/Components/Burst/Burst.gd"
+}, {
+"base": "Node",
+"class": "GDWeaponsInfo",
+"language": "GDScript",
+"path": "res://src/Util/Info/Info.gd"
+}, {
+"base": "GDWeaponsActionWithCooldown",
+"class": "GDWeaponsMagazine",
+"language": "GDScript",
+"path": "res://src/Components/Magazine/Magazine.gd"
+}, {
+"base": "Node",
+"class": "GDWeaponsRecoil",
+"language": "GDScript",
+"path": "res://src/Components/Recoil/Recoil.gd"
+}, {
+"base": "GDWeaponsActionWithCooldown",
+"class": "GDWeaponsWeapon",
+"language": "GDScript",
+"path": "res://src/Weapon.gd"
+} ]
 _global_script_class_icons={
-
+"GDWeaponsActionWithCooldown": "",
+"GDWeaponsAmmo": "",
+"GDWeaponsAutoAttack": "",
+"GDWeaponsBulletSpawner": "",
+"GDWeaponsBurst": "",
+"GDWeaponsInfo": "",
+"GDWeaponsMagazine": "",
+"GDWeaponsRecoil": "",
+"GDWeaponsWeapon": ""
 }
 
 [application]

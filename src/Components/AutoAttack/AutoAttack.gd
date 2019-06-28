@@ -1,4 +1,6 @@
-extends "../WeaponComponentParent.gd"
+extends Node
+
+class_name GDWeaponsAutoAttack
 
 func _ready():
 	call_deferred("begin_auto_attack")
@@ -7,18 +9,18 @@ func _ready():
 	start_auto_attack()
 
 func start_auto_attack():
-	if not weapon.is_connected("end_action",weapon,"start_action"):
-		weapon.connect("end_action",weapon,"start_action")
+	if not $Info.weapon.is_connected("end_action",$Info.weapon,"start_action"):
+		$Info.weapon.connect("end_action",$Info.weapon,"start_action")
 
-	if _magazine != null and not _magazine.is_connected("reloaded_successfully",weapon,"start_action"):
-		_magazine.connect("reloaded_successfully",weapon,"start_action")
+	if $Info._magazine != null and not $Info._magazine.is_connected("reloaded_successfully",$Info.weapon,"start_action"):
+		$Info._magazine.connect("reloaded_successfully",$Info.weapon,"start_action")
 
-	weapon.start_action()
+	$Info.weapon.start_action()
 
 func end_auto_attack():
-	if weapon.is_connected("end_action",weapon,"start_action"):
-		weapon.disconnect("end_action",weapon,"start_action")
+	if $Info.weapon.is_connected("end_action",$Info.weapon,"start_action"):
+		$Info.weapon.disconnect("end_action",$Info.weapon,"start_action")
 
-	if _magazine != null and _magazine.is_connected("reloaded_successfully",weapon,"start_action"):
-		_magazine.disconnect("reloaded_successfully",weapon,"start_action")
+	if $Info._magazine != null and $Info._magazine.is_connected("reloaded_successfully",$Info.weapon,"start_action"):
+		$Info._magazine.disconnect("reloaded_successfully",$Info.weapon,"start_action")
 

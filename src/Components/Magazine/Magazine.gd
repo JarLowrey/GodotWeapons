@@ -1,4 +1,6 @@
-extends "../ActionWithCooldown/ActionWithCooldown.gd"
+extends GDWeaponsActionWithCooldown
+
+class_name GDWeaponsMagazine
 
 signal emptied()
 signal decremented(amt_left)
@@ -9,7 +11,7 @@ var _attacks_left_in_mag = 1
 
 func _ready():
 	_attacks_left_in_mag = size
-	weapon.connect("action_ended",self,"_decrement")
+	$Info.weapon.connect("action_ended",self,"_decrement")
 
 func _decrement():
 	if _attacks_left_in_mag > 0:
@@ -23,7 +25,7 @@ func _decrement():
 #wrap parent functions for better names and extra get/set logic
 func start_reload():
 	#if user reloads during attack cooldown, stop attack cooldown
-	_weapon.end_action() 
+	$Info.weapon.end_action() 
 	.start_action()
 
 func end_reload():

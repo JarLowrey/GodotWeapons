@@ -1,4 +1,6 @@
-extends "../WeaponComponentParent.gd"
+extends Node
+
+class_name GDWeaponsActionWithCooldown
 
 export var cooldown_delay = 1.0 setget _set_cooldown_delay
 

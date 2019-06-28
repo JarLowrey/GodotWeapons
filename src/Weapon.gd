@@ -1,10 +1,11 @@
-extends ActionWithCooldown
+extends GDWeaponsActionWithCooldown
+
+class_name GDWeaponsWeapon
 
 export var wielder_path = ".."
 var _wielder
 
 func _ready():
-    .weapon = self
     _wielder = get_node(wielder_path)
 
 func can_act():
