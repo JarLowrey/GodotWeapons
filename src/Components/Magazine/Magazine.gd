@@ -2,6 +2,8 @@ extends GDWeaponsActionWithCooldown
 
 class_name GDWeaponsMagazine
 
+onready var weapon = get_node(GDWeaponsWeapon.WEAPON_PATH_FROM_COMPONENT)
+
 signal emptied()
 signal decremented(amt_left)
 
@@ -10,8 +12,9 @@ export var auto_reload = false
 var _attacks_left_in_mag = 1
 
 func _ready():
+	._ready()
 	_attacks_left_in_mag = size
-	$Info.weapon.connect("action_ended",self,"_decrement")
+	weapon.connect("ended",self,"_decrement")
 
 func _decrement():
 	if _attacks_left_in_mag > 0:
@@ -25,12 +28,9 @@ func _decrement():
 #wrap parent functions for better names and extra get/set logic
 func start_reload():
 	#if user reloads during attack cooldown, stop attack cooldown
-	$Info.weapon.end_action() 
+	weapon.cancel_action() 
 	.start_action()
 
 func end_reload():
 	_attacks_left_in_mag = size
 	.end_action()
-	
-func cancel_reload():
-	.cancel_action()

@@ -34,11 +34,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Components/Burst/Burst.gd"
 }, {
-"base": "Node",
-"class": "GDWeaponsInfo",
-"language": "GDScript",
-"path": "res://src/Util/Info/Info.gd"
-}, {
 "base": "GDWeaponsActionWithCooldown",
 "class": "GDWeaponsMagazine",
 "language": "GDScript",
@@ -60,7 +55,6 @@ _global_script_class_icons={
 "GDWeaponsAutoAttack": "",
 "GDWeaponsBulletSpawner": "",
 "GDWeaponsBurst": "",
-"GDWeaponsInfo": "",
 "GDWeaponsMagazine": "",
 "GDWeaponsRecoil": "",
 "GDWeaponsWeapon": ""

@@ -7,15 +7,16 @@ export var cooldown_delay = 1.0 setget _set_cooldown_delay
 signal began()
 signal ended()
 signal cancelled()
-signal premature_end_attempt()
+signal cooldown_over()
 signal premature_start_attempt()
 
 var is_in_cooldown = false
 var is_acting = false
+export var timer_path = "Timer"
 var cooldown_timer
 
 func _ready():
-	cooldown_timer = $Timer
+	cooldown_timer = get_node(timer_path)
 	cooldown_timer.connect("timeout",self, "exit_cooldown")
 
 func can_act():
@@ -30,8 +31,7 @@ func start_action():
 	emit_signal("began")
 
 func end_action():
-	if(is_acting):
-		emit_signal("premature_end_attempt")
+	if(!is_acting):
 		return
 	
 	is_acting = false
@@ -50,7 +50,8 @@ func cancel_action():
 
 func exit_cooldown():
 	is_in_cooldown = false
-	cooldown_timer.stop()
+	cooldown_timer.stop() #just in case this is manually called
+	emit_signal("cooldown_over")
 
 func reset():
 	is_in_cooldown = false

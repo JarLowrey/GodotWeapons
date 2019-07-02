@@ -4,10 +4,14 @@ class_name GDWeaponsRecoil
 
 export var max_recoil = 15.0
 
+onready var weapon = get_node(GDWeaponsWeapon.WEAPON_PATH_FROM_COMPONENT)
+
 func _ready():
 	._ready()
-	$Info.weapon.connect("ended",self,"_apply_recoil")
+	weapon.connect("ended",self,"_apply_recoil")
 
 func _apply_recoil():
-	if $Info._view_node is Node2D:
-		$Info._view_node.global_rotation += max_recoil * (2 * randf() - 1)
+	if weapon is Node2D: 
+		weapon.global_rotation += max_recoil * (2 * randf() - 1)
+	else:
+		pass

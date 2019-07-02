@@ -2,7 +2,9 @@ extends Node
 
 class_name GDWeaponsBulletSpawner
 
-export var bullet_scene_path = ""
+onready var weapon = get_node(GDWeaponsWeapon.WEAPON_PATH_FROM_COMPONENT)
+
+export var bullet_scene_path = "res://test/bullets/SimpleBullet.tscn"
 
 #MUST CONNECT spawn METHOD TO START/END ATTACK IN EDITOR!
 
@@ -12,7 +14,8 @@ func spawn():
 	get_tree().get_root().add_child(b)
 
 	#initialize bullet
-	if $Info._view_node is Node2D and b is Node2D:
-		b.global_rotation = $Info._view_node.global_rotation
-		b.global_position = $Info._view_node.global_position
-	#else: #is 3D
+	if weapon is Node2D:
+		b.global_rotation = weapon.global_rotation
+		b.global_position = weapon.global_position
+	else: 
+		pass

@@ -2,15 +2,13 @@ extends GDWeaponsActionWithCooldown
 
 class_name GDWeaponsWeapon
 
-export var wielder_path = ".."
-var _wielder
+const WEAPON_PATH_FROM_COMPONENT = ".."
+
+# act as controller/coordinator - get all the paths to other nodes
+
+var MagNamePath = "Magazine"
+var magazine
 
 func _ready():
-    _wielder = get_node(wielder_path)
-
-func can_act():
-	var act = .can_act()
-	if has_node("Magazine"):
-		var m = get_node("Magazine")
-		act = act && m.can_act()
-	return act
+	if has_node(MagNamePath):
+		magazine = get_node(MagNamePath)

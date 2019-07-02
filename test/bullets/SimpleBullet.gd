@@ -3,6 +3,5 @@ extends Sprite
 export var speed = 50
 
 func _physics_process(delta):
-	var x = cos(global_rotation) * speed
-	var y = sin(global_rotation) * speed
-	global_position +=  Vector2(x,y)
+	var velocity = Vector2 (0, -speed).rotated (global_rotation)
+	global_position +=  velocity * delta
