@@ -1,6 +1,6 @@
 extends GDWeaponsLongAction
 
-class_name GDWeaponsActionWithCooldown
+class_name GDWeaponsActionWithCooldown 
 
 export var cooldown_delay = 1.0 setget _set_cooldown_delay
 onready var original_cooldown_delay = cooldown_delay
@@ -10,17 +10,16 @@ signal cooldown_over()
 var is_in_cooldown = false
 export var timer_path = "Timer"
 onready var cooldown_timer = get_node(timer_path)
-
+ 
 func _ready():
-	if not cooldown_timer.is_connected("timeout",self, "exit_cooldown"):
-		cooldown_timer.connect("timeout",self, "exit_cooldown")
+	cooldown_timer.connect("timeout",self, "exit_cooldown")
 	_apply_cooldown_delay()
 
 func can_start_action():
 	return .can_start_action() and not is_in_cooldown
 
-func cleanup_action():
-	.cleanup_action()
+func _apply_end_action():
+	._apply_end_action()
 	is_in_cooldown = true
 	cooldown_timer.start()
 
