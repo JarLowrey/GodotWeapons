@@ -1,65 +1,44 @@
-extends Node
+extends GDWeaponsLongAction
 
 class_name GDWeaponsActionWithCooldown
 
 export var cooldown_delay = 1.0 setget _set_cooldown_delay
+onready var original_cooldown_delay = cooldown_delay
 
-signal began()
-signal ended()
-signal cancelled()
 signal cooldown_over()
-signal premature_start_attempt()
 
 var is_in_cooldown = false
-var is_acting = false
 export var timer_path = "Timer"
-var cooldown_timer
+onready var cooldown_timer = get_node(timer_path)
 
 func _ready():
-	cooldown_timer = get_node(timer_path)
-	cooldown_timer.connect("timeout",self, "exit_cooldown")
+	if not cooldown_timer.is_connected("timeout",self, "exit_cooldown"):
+		cooldown_timer.connect("timeout",self, "exit_cooldown")
+	_apply_cooldown_delay()
 
-func can_act():
-	return not is_in_cooldown and not is_acting
+func can_start_action():
+	return .can_start_action() and not is_in_cooldown
 
-func start_action():
-	if(!can_act()):
-		emit_signal("premature_start_attempt")
-		return
-	
-	is_acting = true
-	emit_signal("began")
-
-func end_action():
-	if(!is_acting):
-		return
-	
-	is_acting = false
+func cleanup_action():
+	.cleanup_action()
 	is_in_cooldown = true
-
 	cooldown_timer.start()
-	emit_signal("ended")
-
-func cancel_action():
-	if(!is_acting):
-		return
-	
-	is_acting = false
-	#cooldown_timer.start() #still get cooldown penalty when cancelled? 
-	emit_signal("cancelled")
 
 func exit_cooldown():
+	print("cooldown ended")
 	is_in_cooldown = false
 	cooldown_timer.stop() #just in case this is manually called
 	emit_signal("cooldown_over")
 
 func reset():
+	.reset()
 	is_in_cooldown = false
-	is_acting = false;
 	cooldown_timer.stop()
 
 func _set_cooldown_delay(value):
 	cooldown_delay = value
+	_apply_cooldown_delay();
 
+func _apply_cooldown_delay():
 	if(is_inside_tree()):
 		cooldown_timer.wait_time = cooldown_delay

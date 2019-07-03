@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
+"base": "GDWeaponsLongAction",
 "class": "GDWeaponsActionWithCooldown",
 "language": "GDScript",
 "path": "res://src/Util/ActionWithCooldown/ActionWithCooldown.gd"
@@ -34,7 +34,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Components/Burst/Burst.gd"
 }, {
-"base": "GDWeaponsActionWithCooldown",
+"base": "Node",
+"class": "GDWeaponsLongAction",
+"language": "GDScript",
+"path": "res://src/Util/LongAction/LongAction.gd"
+}, {
+"base": "GDWeaponsLongAction",
 "class": "GDWeaponsMagazine",
 "language": "GDScript",
 "path": "res://src/Components/Magazine/Magazine.gd"
@@ -55,6 +60,7 @@ _global_script_class_icons={
 "GDWeaponsAutoAttack": "",
 "GDWeaponsBulletSpawner": "",
 "GDWeaponsBurst": "",
+"GDWeaponsLongAction": "",
 "GDWeaponsMagazine": "",
 "GDWeaponsRecoil": "",
 "GDWeaponsWeapon": ""
@@ -63,7 +69,7 @@ _global_script_class_icons={
 [application]
 
 config/name="GodotWeapons"
-run/main_scene="res://test/World.tscn"
+run/main_scene="res://test/2DTest.tscn"
 config/icon="res://icon.png"
 
 [rendering]

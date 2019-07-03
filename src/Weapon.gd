@@ -6,9 +6,13 @@ const WEAPON_PATH_FROM_COMPONENT = ".."
 
 # act as controller/coordinator - get all the paths to other nodes
 
-var MagNamePath = "Magazine"
+var MagPath = "Magazine"
 var magazine
+var BurstPath = "Magazine"
+var burst 
 
 func _ready():
-	if has_node(MagNamePath):
-		magazine = get_node(MagNamePath)
+	if has_node(MagPath):
+		magazine = get_node(MagPath)
+	if has_node(BurstPath):
+		burst = get_node(BurstPath)
