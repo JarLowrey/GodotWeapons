@@ -29,14 +29,19 @@ func _decrement():
 #wrap parent functions for better names and extra get/set logic
 func start_reload():
 	#if user reloads during attack cooldown, stop attack cooldown
-	weapon.cancel_action() 
+	weapon.cancel_attack() 
 	weapon.cooldown_delay = reload_cooldown
-	print(is_acting)
 	.start_action()
 
+func cancel_reload():
+	.cancel_action()
+	_reset_weapon_delay()
+
 func end_reload():
-	print("reload ended")
 	.end_action()
 	_attacks_left_in_mag = size
+	_reset_weapon_delay()
+
+func _reset_weapon_delay():
 	print(weapon.original_cooldown_delay)
 	weapon.cooldown_delay = weapon.original_cooldown_delay

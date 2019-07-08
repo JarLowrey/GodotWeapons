@@ -19,4 +19,4 @@ texture = ExtResource( 2 )
 size = 3
 [connection signal="began" from="." to="." method="end_action"]
 [connection signal="ended" from="." to="BulletSpawner2D" method="spawn"]
-[connection signal="began" from="Magazine" to="." method="end_action"]
+[connection signal="began" from="Magazine" to="Magazine" method="end_reload"]

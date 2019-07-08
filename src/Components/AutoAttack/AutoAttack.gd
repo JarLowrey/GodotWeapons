@@ -12,7 +12,7 @@ func start_auto_attack():
 	if not weapon.is_connected("cooldown_over",weapon,"start_action"):
 		weapon.connect("cooldown_over",weapon,"start_action")
 
-	weapon.start_action()
+	weapon.start_attack()
 
 func end_auto_attack():
 	if weapon.is_connected("ended",weapon,"start_action"):
