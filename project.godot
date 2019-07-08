@@ -9,11 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "GDWeaponsLongAction",
-"class": "GDWeaponsActionWithCooldown",
-"language": "GDScript",
-"path": "res://src/Util/ActionWithCooldown.gd"
-}, {
 "base": "Node",
 "class": "GDWeaponsAmmo",
 "language": "GDScript",
@@ -37,7 +32,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "GDWeaponsLongAction",
 "language": "GDScript",
-"path": "res://src/Util/LongAction.gd"
+"path": "res://src/Util/LongAction/LongAction.gd"
 }, {
 "base": "GDWeaponsLongAction",
 "class": "GDWeaponsMagazine",
@@ -49,13 +44,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Components/Recoil/Recoil.gd"
 }, {
-"base": "GDWeaponsActionWithCooldown",
+"base": "GDWeaponsLongAction",
 "class": "GDWeaponsWeapon",
 "language": "GDScript",
 "path": "res://src/Weapon.gd"
 } ]
 _global_script_class_icons={
-"GDWeaponsActionWithCooldown": "",
 "GDWeaponsAmmo": "",
 "GDWeaponsAutoAttack": "",
 "GDWeaponsBulletSpawner": "",

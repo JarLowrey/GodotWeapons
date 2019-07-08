@@ -2,7 +2,7 @@ extends Node
 
 class_name GDWeaponsRecoil
 
-export var max_recoil = 15.0
+export var max_recoil = 5.0
 
 onready var weapon = get_node(GDWeaponsWeapon.WEAPON_PATH_FROM_COMPONENT)
 

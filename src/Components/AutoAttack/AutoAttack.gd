@@ -9,11 +9,11 @@ func _ready():
 	connect("tree_exited",self,"end_auto_attack")
 
 func start_auto_attack():
-	if not weapon.is_connected("cooldown_over",weapon,"start_action"):
-		weapon.connect("cooldown_over",weapon,"start_action")
+	if not weapon.is_connected("can_act_again",weapon,"start_action"):
+		weapon.connect("can_act_again",weapon,"start_action")
 
 	weapon.start_attack()
 
 func end_auto_attack():
-	if weapon.is_connected("ended",weapon,"start_action"):
-		weapon.disconnect("ended",weapon,"start_action")
+	if weapon.is_connected("can_act_again",weapon,"start_action"):
+		weapon.disconnect("can_act_again",weapon,"start_action")

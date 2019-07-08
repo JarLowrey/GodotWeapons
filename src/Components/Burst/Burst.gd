@@ -13,6 +13,9 @@ func _ready():
 	if weapon.magazine != null:
 		weapon.magazine.connect("ended",self,"reset_current_attack_in_burst")
 
+
+# TODO: This function depends on the implementation of Weapon/LongAction.
+# Make a default for when LongAction is timed, make note in API for animations or whatever else
 func _set_weapon_delay():
 	current_attack_in_burst += 1
 	

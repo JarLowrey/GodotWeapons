@@ -1,8 +1,12 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/Weapon.gd" type="Script" id=1]
+[ext_resource path="res://src/Util/LongAction/LongAction.tscn" type="PackedScene" id=2]
+
 
 [node name="Weapon2D" type="Node2D"]
 script = ExtResource( 1 )
+cooldown_delay = null
+timer_path = null
 
-[node name="Timer" type="Timer" parent="."]
+[node name="FiringCooldown" parent="." instance=ExtResource( 2 )]

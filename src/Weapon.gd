@@ -1,4 +1,4 @@
-extends GDWeaponsActionWithCooldown
+extends GDWeaponsLongAction
 
 class_name GDWeaponsWeapon
 
