@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Components/Burst/Burst.gd"
 }, {
+"base": "GDWeaponsLongAction",
+"class": "GDWeaponsCooldownAction",
+"language": "GDScript",
+"path": "res://src/Util/CooldownAction/CooldownAction.gd"
+}, {
 "base": "Node",
 "class": "GDWeaponsLongAction",
 "language": "GDScript",
@@ -54,6 +59,7 @@ _global_script_class_icons={
 "GDWeaponsAutoAttack": "",
 "GDWeaponsBulletSpawner": "",
 "GDWeaponsBurst": "",
+"GDWeaponsCooldownAction": "",
 "GDWeaponsLongAction": "",
 "GDWeaponsMagazine": "",
 "GDWeaponsRecoil": "",
@@ -64,7 +70,6 @@ _global_script_class_icons={
 
 config/name="GodotWeapons"
 run/main_scene="res://test/2DTest.tscn"
-config/icon="res://icon.png"
 
 [rendering]
 

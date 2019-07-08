@@ -6,6 +6,8 @@
 [ext_resource path="res://src/Components/BulletSpawner/BulletSpawner.tscn" type="PackedScene" id=4]
 
 [node name="BasicGun" instance=ExtResource( 1 )]
+cooldown_delay = null
+timer_path = null
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
 texture = ExtResource( 2 )

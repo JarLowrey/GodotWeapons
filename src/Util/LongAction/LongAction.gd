@@ -11,6 +11,9 @@ signal can_act_again()
 var is_acting = false
 var interupting_actions = []
 
+func _ready():
+	pass
+
 func add_interupting_action(long_action):
 	interupting_actions.append(long_action)
 	long_action.connect("ended", self, "_check_can_act")
@@ -24,11 +27,11 @@ func _check_can_act():
 	if can_start_action():
 		emit_signal("can_act_again")
 
-func _ready():
-	add_interupting_action(self)
-
 func can_start_action():
-	for var action in interupting_actions:
+	if is_acting:
+		return false
+	
+	for action in interupting_actions:
 		if action.is_acting:
 			return false
 	return true

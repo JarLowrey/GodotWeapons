@@ -1,8 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/Weapon.gd" type="Script" id=1]
-[ext_resource path="res://src/Util/LongAction/LongAction.tscn" type="PackedScene" id=2]
-
+[ext_resource path="res://src/Util/CooldownAction/CooldownAction.tscn" type="PackedScene" id=2]
 
 [node name="Weapon3D" type="Spatial"]
 script = ExtResource( 1 )
