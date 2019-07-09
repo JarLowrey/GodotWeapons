@@ -4,15 +4,11 @@
 [ext_resource path="res://test/assets/gun.png" type="Texture" id=2]
 [ext_resource path="res://src/Components/AutoAttack/AutoAttack.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Components/BulletSpawner/BulletSpawner.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/Components/Magazine/Magazine.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/Components/Combo/Combo.tscn" type="PackedScene" id=5]
 
-[node name="GunWithMag" instance=ExtResource( 1 )]
-
-[node name="FiringCooldown" parent="." index="0"]
-editor/display_folded = true
+[node name="BasicGun" index="0" instance=ExtResource( 1 )]
 
 [node name="Timer" type="Timer" parent="FiringCooldown" index="0"]
-one_shot = true
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
 texture = ExtResource( 2 )
@@ -21,16 +17,8 @@ texture = ExtResource( 2 )
 
 [node name="BulletSpawner2D" parent="." index="3" instance=ExtResource( 4 )]
 
-[node name="Magazine" parent="." index="4" instance=ExtResource( 5 )]
-editor/display_folded = true
-size = 3
-
-[node name="Timer" type="Timer" parent="Magazine" index="0"]
-wait_time = 3.0
-one_shot = true
+[node name="Combo" parent="." index="4" instance=ExtResource( 5 )]
 [connection signal="began" from="." to="." method="end_action"]
 [connection signal="ended" from="." to="BulletSpawner2D" method="spawn"]
 [connection signal="began" from="FiringCooldown" to="FiringCooldown/Timer" method="start"]
 [connection signal="timeout" from="FiringCooldown/Timer" to="FiringCooldown" method="end_action"]
-[connection signal="began" from="Magazine" to="Magazine/Timer" method="start"]
-[connection signal="timeout" from="Magazine/Timer" to="Magazine" method="end_reload"]

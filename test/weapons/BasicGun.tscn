@@ -6,8 +6,8 @@
 [ext_resource path="res://src/Components/BulletSpawner/BulletSpawner.tscn" type="PackedScene" id=4]
 
 [node name="BasicGun" instance=ExtResource( 1 )]
-cooldown_delay = null
-timer_path = null
+
+[node name="Timer" type="Timer" parent="FiringCooldown" index="0"]
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
 texture = ExtResource( 2 )
@@ -17,3 +17,5 @@ texture = ExtResource( 2 )
 [node name="BulletSpawner2D" parent="." index="3" instance=ExtResource( 4 )]
 [connection signal="began" from="." to="." method="end_action"]
 [connection signal="ended" from="." to="BulletSpawner2D" method="spawn"]
+[connection signal="began" from="FiringCooldown" to="FiringCooldown/Timer" method="start"]
+[connection signal="timeout" from="FiringCooldown/Timer" to="FiringCooldown" method="end_action"]

@@ -21,7 +21,6 @@ func _ready():
 	weapon.connect("ended",self,"_decrement")
 
 func _decrement():
-	print(_attacks_left_in_mag)
 	if _attacks_left_in_mag > 0:
 		_attacks_left_in_mag-=1
 		emit_signal("decremented",_attacks_left_in_mag)
