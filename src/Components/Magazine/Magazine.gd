@@ -11,6 +11,9 @@ export var size = 1
 export var auto_reload = true 
 var _attacks_left_in_mag = 1 
 
+func can_start_action():
+	return .can_start_action() and _attacks_left_in_mag > 0
+
 func _ready():
 	._ready()
 	_attacks_left_in_mag = size
@@ -18,6 +21,7 @@ func _ready():
 	weapon.connect("ended",self,"_decrement")
 
 func _decrement():
+	print(_attacks_left_in_mag)
 	if _attacks_left_in_mag > 0:
 		_attacks_left_in_mag-=1
 		emit_signal("decremented",_attacks_left_in_mag)
@@ -36,5 +40,5 @@ func cancel_reload():
 	.cancel_action()
 
 func end_reload():
-	.end_action()
 	_attacks_left_in_mag = size
+	.end_action()

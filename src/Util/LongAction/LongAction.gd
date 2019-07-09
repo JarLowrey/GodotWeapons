@@ -28,13 +28,10 @@ func _check_can_act():
 		emit_signal("can_act_again")
 
 func can_start_action():
-	if is_acting:
-		return false
-	
+	var can_act = not is_acting
 	for action in interupting_actions:
-		if action.is_acting:
-			return false
-	return true
+		can_act = can_act and action.can_start_action()
+	return can_act
 
 func start_action():
 	if(!can_start_action()):
