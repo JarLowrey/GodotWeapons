@@ -17,7 +17,7 @@ func can_start_action():
 func _ready():
 	._ready()
 	_attacks_left_in_mag = size
-	weapon.add_interupting_action(self)
+	weapon.add_action_to_interupt_start(self)
 	weapon.connect("ended",self,"_decrement")
 
 func _decrement():

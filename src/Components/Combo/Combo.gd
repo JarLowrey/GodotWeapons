@@ -12,8 +12,8 @@ onready var reset_combo_timer = get_node("Timer")
 export var combo_json = ""
 
 var combo_data = [
-	{"wait": 0.2},
-	{"wait": 0.1},
+	{"wait": 2},
+	{"wait": 1.5},
 	{}
 ]
 
@@ -29,6 +29,7 @@ func increment_combo():
 	var combo = combo_data[current_combo_attack]
 	
 	apply_combo_data(combo)
+	reset_combo_timer.start()
 	
 	if can_increment():
 		current_combo_attack += 1
@@ -36,11 +37,9 @@ func increment_combo():
 	else:
 		emit_signal("max_attack_in_combo")
 		reset_combo()
-	
-	print(current_combo_attack)
 
 func can_increment():
-	return current_combo_attack < combo_data.size()
+	return current_combo_attack < combo_data.size() - 1
 
 func apply_combo_data(combo):
 	if 'wait' in combo:

@@ -30,6 +30,16 @@ _global_script_classes=[ {
 "path": "res://src/Components/Burst/Burst.gd"
 }, {
 "base": "Node",
+"class": "GDWeaponsCapacity",
+"language": "GDScript",
+"path": "res://src/Util/Capacity/Capacity.gd"
+}, {
+"base": "GDWeaponsLongAction",
+"class": "GDWeaponsCharge",
+"language": "GDScript",
+"path": "res://src/Components/Charge/Charge.gd"
+}, {
+"base": "Node",
 "class": "GDWeaponsCombo",
 "language": "GDScript",
 "path": "res://src/Components/Combo/Combo.gd"
@@ -64,6 +74,8 @@ _global_script_class_icons={
 "GDWeaponsAutoAttack": "",
 "GDWeaponsBulletSpawner": "",
 "GDWeaponsBurst": "",
+"GDWeaponsCapacity": "",
+"GDWeaponsCharge": "",
 "GDWeaponsCombo": "",
 "GDWeaponsCooldownAction": "",
 "GDWeaponsLongAction": "",
