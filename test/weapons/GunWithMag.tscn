@@ -28,7 +28,7 @@ size = 3
 [node name="Timer" type="Timer" parent="Magazine" index="0"]
 wait_time = 3.0
 one_shot = true
-[connection signal="began" from="." to="." method="end_action"]
+[connection signal="began" from="." to="." method="end_attack"]
 [connection signal="ended" from="." to="BulletSpawner2D" method="spawn"]
 [connection signal="began" from="FiringCooldown" to="FiringCooldown/Timer" method="start"]
 [connection signal="timeout" from="FiringCooldown/Timer" to="FiringCooldown" method="end_action"]

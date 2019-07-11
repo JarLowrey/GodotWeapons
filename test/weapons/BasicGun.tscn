@@ -15,7 +15,7 @@ texture = ExtResource( 2 )
 [node name="AutoAttack" parent="." index="2" instance=ExtResource( 3 )]
 
 [node name="BulletSpawner2D" parent="." index="3" instance=ExtResource( 4 )]
-[connection signal="began" from="." to="." method="end_action"]
+[connection signal="began" from="." to="." method="end_attack"]
 [connection signal="ended" from="." to="BulletSpawner2D" method="spawn"]
 [connection signal="began" from="FiringCooldown" to="FiringCooldown/Timer" method="start"]
 [connection signal="timeout" from="FiringCooldown/Timer" to="FiringCooldown" method="end_action"]
