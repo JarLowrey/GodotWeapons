@@ -15,7 +15,6 @@ func _ready():
 
 func end_action():
 	$Capacity.current_capacity = 0
-	print("ended")
 	.end_action()
 	weapon.start_attack()
 

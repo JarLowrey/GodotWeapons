@@ -6,7 +6,7 @@
 [ext_resource path="res://src/Components/BulletSpawner/BulletSpawner.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Components/Charge/Charge.tscn" type="PackedScene" id=5]
 
-[node name="ChargeGun" index="0" instance=ExtResource( 1 )]
+[node name="ChargeGun" instance=ExtResource( 1 )]
 
 [node name="Timer" type="Timer" parent="FiringCooldown" index="0"]
 

@@ -7,14 +7,18 @@ signal ended()
 signal cancelled()
 signal premature_start_attempt()
 signal can_start_action_again()
+signal can_end_action()
 
 var is_acting = false
 var actions_interupt_start = []
+var actions_interupt_end = []
 
 func _ready():
 	pass
 
 func add_action_to_interupt_start(long_action):
+#	if not long_action.has_method("can_start_action"):
+#		throw "ERR"
 	actions_interupt_start.append(long_action)
 	long_action.connect("ended", self, "_check_can_start")
 
@@ -23,10 +27,30 @@ func remove_action_to_interupt_start(long_action):
 	var index = actions_interupt_start.find(long_action)
 	actions_interupt_start.remove(index)
 
+func add_action_to_interupt_end(long_action):
+	actions_interupt_end.append(long_action)
+	long_action.connect("ended", self, "_check_can_end")
+
+func remove_action_to_interupt_end(long_action):
+	long_action.disconnect("ended", self, "_check_can_end")
+	var index = actions_interupt_end.find(long_action)
+	actions_interupt_end.remove(long_action)
+
+
 func _check_can_start():
 	if can_start_action():
 		emit_signal("can_start_action_again")
 
+func _check_can_end():
+	if can_end_action():
+		emit_signal("can_end_action")
+
+func can_end_action():
+	var can_end = is_acting
+	for action in actions_interupt_end:
+		can_end = can_end and action.can_end_action()
+	return can_end
+	
 func can_start_action():
 	var can_start = not is_acting
 	for action in actions_interupt_start:

@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
+"base": "GDWeaponsCapacity",
 "class": "GDWeaponsAmmo",
 "language": "GDScript",
 "path": "res://src/Components/Ammo/Ammo.gd"
@@ -54,10 +54,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Util/LongAction/LongAction.gd"
 }, {
+"base": "GDWeaponsCapacity",
+"class": "GDWeaponsMagCapacity",
+"language": "GDScript",
+"path": "res://src/Components/Magazine/MagCapacity.gd"
+}, {
 "base": "GDWeaponsLongAction",
 "class": "GDWeaponsMagazine",
 "language": "GDScript",
 "path": "res://src/Components/Magazine/Magazine.gd"
+}, {
+"base": "Node",
+"class": "GDWeaponsMagazine2",
+"language": "GDScript",
+"path": "res://src/Components/Magazine/Magazine2.gd"
 }, {
 "base": "Node",
 "class": "GDWeaponsRecoil",
@@ -79,7 +89,9 @@ _global_script_class_icons={
 "GDWeaponsCombo": "",
 "GDWeaponsCooldownAction": "",
 "GDWeaponsLongAction": "",
+"GDWeaponsMagCapacity": "",
 "GDWeaponsMagazine": "",
+"GDWeaponsMagazine2": "",
 "GDWeaponsRecoil": "",
 "GDWeaponsWeapon": ""
 }

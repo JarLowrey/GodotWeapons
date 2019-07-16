@@ -8,10 +8,8 @@
 
 [node name="GunWithMag" instance=ExtResource( 1 )]
 
-[node name="FiringCooldown" parent="." index="0"]
-editor/display_folded = true
-
 [node name="Timer" type="Timer" parent="FiringCooldown" index="0"]
+wait_time = 0.5
 one_shot = true
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
@@ -22,15 +20,18 @@ texture = ExtResource( 2 )
 [node name="BulletSpawner2D" parent="." index="3" instance=ExtResource( 4 )]
 
 [node name="Magazine" parent="." index="4" instance=ExtResource( 5 )]
-editor/display_folded = true
-size = 3
 
-[node name="Timer" type="Timer" parent="Magazine" index="0"]
+[node name="MagCapacity" parent="Magazine" index="0"]
+max_capacity = 3
+
+[node name="Timer" type="Timer" parent="Magazine/ReloadAction" index="0"]
 wait_time = 3.0
 one_shot = true
 [connection signal="began" from="." to="." method="end_attack"]
 [connection signal="ended" from="." to="BulletSpawner2D" method="spawn"]
 [connection signal="began" from="FiringCooldown" to="FiringCooldown/Timer" method="start"]
 [connection signal="timeout" from="FiringCooldown/Timer" to="FiringCooldown" method="end_action"]
-[connection signal="began" from="Magazine" to="Magazine/Timer" method="start"]
-[connection signal="timeout" from="Magazine/Timer" to="Magazine" method="end_reload"]
+[connection signal="began" from="Magazine/ReloadAction" to="Magazine/ReloadAction/Timer" method="start"]
+[connection signal="timeout" from="Magazine/ReloadAction/Timer" to="Magazine/ReloadAction" method="end_action"]
+
+[editable path="Magazine"]

@@ -11,18 +11,29 @@ func _ready():
 func start_auto_attack():
 	_connect_weapon(true)
 	_connect_charge(true)
+	_connect_mag(true)
 	
 	start_attacking()
 
 func end_auto_attack():
 	_connect_weapon(false)
 	_connect_charge(false)
+	_connect_mag(false)
 
 func start_attacking():
 	if weapon.charge != null:
 		weapon.charge.start_action()
 	else:
 		weapon.start_attack()
+		
+func _connect_mag(to_connect):
+	if weapon.magazine != null:
+		var action = weapon.magazine.get_node("ReloadAction")
+		var cntd = action.is_connected("ended",weapon,"start_attack")
+		if to_connect and not cntd:
+			action.connect("ended",weapon,"start_attack")
+		elif not to_connect and cntd:
+			action.disconnect("ended",weapon,"start_attack")
 
 func _connect_charge(to_connect):
 	if weapon.charge != null:

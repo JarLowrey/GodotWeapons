@@ -5,7 +5,7 @@
 [ext_resource path="res://src/Components/AutoAttack/AutoAttack.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Components/BulletSpawner/BulletSpawner.tscn" type="PackedScene" id=4]
 
-[node name="BasicGun" instance=ExtResource( 1 )]
+[node name="AutoAttackingGun" instance=ExtResource( 1 )]
 
 [node name="Timer" type="Timer" parent="FiringCooldown" index="0"]
 

@@ -1,23 +1,20 @@
-extends Node
+extends GDWeaponsCapacity
 
 class_name GDWeaponsAmmo
 
-onready var weapon = get_node(GDWeaponsWeapon.WEAPON_PATH_FROM_COMPONENT)
+onready var weapon = get_node("..")
 
-signal emptied()
-signal decremented(amt_left)
+signal ended()
 
-export var max_amount = 1
-var current_amount = 1
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	current_amount = max_amount
-	weapon.connect("action_began",self,"decrement")
+	weapon.add_action_to_interupt_start(self)
+	weapon.connect("ended",self,"decrement")
+#	connect("not_enough_capacity",self,"turn_off_ability_to_act")
+	
+func can_start_action():
+	return current_capacity >= step
 
-func decrement():
-	if current_amount > 0:
-		current_amount -= 1
-		emit_signal("decremented",current_amount)
-		if current_amount == 0:
-			emit_signal("emptied") 
+
+func set_curr_capacity(val):
+	.set_curr_capacity(val)
+	emit_signal("ended")
