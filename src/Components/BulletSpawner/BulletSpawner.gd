@@ -9,7 +9,7 @@ export var bullet_scene_path = "res://test/bullets/SimpleBullet.tscn"
 #MUST CONNECT spawn METHOD TO START/END ATTACK IN EDITOR!
 
 func spawn():
-	#create bullet 
+	#create bullet
 	var b = load(bullet_scene_path).instance()
 	get_tree().get_root().add_child(b)
 

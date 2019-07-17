@@ -7,6 +7,8 @@ export var attacks_in_burst = 1
 export var burst_delay = 1.0
 
 onready var weapon = get_node(GDWeaponsWeapon.WEAPON_PATH_FROM_COMPONENT)
+onready var delay_timer = weapon.get_node("FiringCooldown/Timer")
+onready var original_delay = delay_timer.wait_time
 
 func _ready():
 	weapon.connect("ended",self,"_set_weapon_delay")
@@ -19,7 +21,7 @@ func _ready():
 func _set_weapon_delay():
 	current_attack_in_burst += 1
 	
-	var delay = weapon.original_cooldown_delay
+	var delay = original_delay
 	if current_attack_in_burst < attacks_in_burst:
 		delay = burst_delay
 	
@@ -30,3 +32,4 @@ func _set_weapon_delay():
 
 func reset_current_attack_in_burst():
 	current_attack_in_burst = 0
+	_set_weapon_delay()

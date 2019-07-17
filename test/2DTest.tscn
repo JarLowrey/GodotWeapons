@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://test/weapons/GunWithMag.tscn" type="PackedScene" id=1]
+[ext_resource path="res://test/weapons/ManualReleaseGun.tscn" type="PackedScene" id=1]
 
 [node name="2DTest" type="Node2D"]
 
-[node name="GunWithMag" parent="." instance=ExtResource( 1 )]
-position = Vector2( 336, 253 )
+[node name="ManualReleaseGun" parent="." instance=ExtResource( 1 )]
+position = Vector2( 191, 169 )

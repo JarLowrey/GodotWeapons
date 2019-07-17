@@ -38,15 +38,15 @@ func _connect_mag(to_connect):
 func _connect_charge(to_connect):
 	if weapon.charge != null:
 		var cap = weapon.charge.get_node("Capacity")
-		var cap_connected = cap.is_connected("filled",weapon.charge,"end_action")
+		var cap_connected = cap.is_connected("filled",weapon.charge,"end_attack")
 		if to_connect and not cap_connected:
-			cap.connect("filled",weapon.charge,"end_action")
+			cap.connect("filled",weapon.charge,"end_attack")
 		elif not to_connect and cap_connected:
-			cap.disconnect("filled",weapon.charge,"end_action")
+			cap.disconnect("filled",weapon.charge,"end_attack")
 
 func _connect_weapon(to_connect):
-	var weapon_connected = weapon.is_connected("can_start_action_again",weapon,"start_action")
+	var weapon_connected = weapon.is_connected("can_start_action_again",weapon,"start_attack")
 	if to_connect and not weapon_connected:
-		weapon.connect("can_start_action_again",weapon,"start_action")
+		weapon.connect("can_start_action_again",weapon,"start_attack")
 	elif not to_connect and weapon_connected:
-		weapon.disconnect("can_start_action_again",weapon,"start_action")
+		weapon.disconnect("can_start_action_again",weapon,"start_attack")

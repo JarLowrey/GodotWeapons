@@ -65,8 +65,7 @@ func start_action():
 	return true
 
 func end_action():
-	if(!is_acting):
-		cancel_action()
+	if(!can_end_action()):
 		return false
 	_apply_end_action()
 	return true

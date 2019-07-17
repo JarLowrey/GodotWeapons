@@ -1,43 +1,21 @@
-extends GDWeaponsLongAction
+extends Node
 
 class_name GDWeaponsMagazine
 
+export var auto_reload = true setget set_auto_reload
+
 onready var weapon = get_node(GDWeaponsWeapon.WEAPON_PATH_FROM_COMPONENT)
 
-signal emptied()
-signal decremented(amt_left)
-
-export var size = 1
-export var auto_reload = true 
-var _attacks_left_in_mag = 1 
-
-func can_start_action():
-	return .can_start_action() and _attacks_left_in_mag > 0
-
 func _ready():
-	._ready()
-	_attacks_left_in_mag = size
-	weapon.add_action_to_interupt_start(self)
-	weapon.connect("ended",self,"_decrement")
+	weapon.add_action_to_interupt_start($ReloadAction)
+	weapon.add_action_to_interupt_start($MagCapacity)
+	weapon.connect("ended",$MagCapacity,"decrement")
+	set_auto_reload(auto_reload)
 
-func _decrement():
-	if _attacks_left_in_mag > 0:
-		_attacks_left_in_mag-=1
-		emit_signal("decremented",_attacks_left_in_mag)
-		if _attacks_left_in_mag == 0:
-			emit_signal("emptied")
-			if auto_reload:
-				start_reload()
-
-#wrap parent functions for better names and extra get/set logic
-func start_reload():
-	#if user reloads during attack cooldown, stop attack cooldown
-	weapon.cancel_attack() 
-	.start_action()
-
-func cancel_reload():
-	.cancel_action()
-
-func end_reload():
-	_attacks_left_in_mag = size
-	.end_action()
+func set_auto_reload(val):
+	auto_reload = val
+	var was_auto_cnt = $MagCapacity.is_connected("emptied",$ReloadAction,"start_action")
+	if auto_reload and not was_auto_cnt:
+		$MagCapacity.connect("emptied",$ReloadAction,"start_action")
+	elif not auto_reload and was_auto_cnt:
+		$MagCapacity.disconnect("emptied",$ReloadAction,"start_action")

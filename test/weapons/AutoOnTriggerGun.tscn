@@ -6,17 +6,18 @@
 [ext_resource path="res://src/Components/BoolBlocker/StartBlocker.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Components/AutoAttack/AutoAttack.tscn" type="PackedScene" id=5]
 
-[node name="AutoAttackingGun" instance=ExtResource( 1 )]
+[node name="AutoOnTriggerGun" instance=ExtResource( 1 )]
 
 [node name="Timer" type="Timer" parent="FiringCooldown" index="0"]
+wait_time = 0.5
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
-position = Vector2( 399, 302 )
 texture = ExtResource( 2 )
 
 [node name="BulletSpawner2D" parent="." index="2" instance=ExtResource( 3 )]
 
-[node name="StartBlockerTrigger" parent="." index="3" instance=ExtResource( 4 )]
+[node name="StartBlocker" parent="." index="3" instance=ExtResource( 4 )]
+input_action_trigger = "ui_accept"
 
 [node name="AutoAttack" parent="." index="4" instance=ExtResource( 5 )]
 [connection signal="began" from="." to="." method="end_attack"]

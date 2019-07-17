@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://src/Components/Magazine/Magazine2.gd" type="Script" id=1]
+[ext_resource path="res://src/Components/Magazine/Magazine.gd" type="Script" id=1]
 [ext_resource path="res://src/Util/Capacity/Capacity.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Components/Magazine/MagCapacity.gd" type="Script" id=3]
 [ext_resource path="res://src/Util/LongAction/LongAction.tscn" type="PackedScene" id=4]
