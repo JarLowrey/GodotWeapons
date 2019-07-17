@@ -1,4 +1,6 @@
-extends Node
+extends  GDWeaponsBoolBlocker
+
+class_name GDWeaponsStartBlocker
 
 onready var weapon = get_node("..")
 
