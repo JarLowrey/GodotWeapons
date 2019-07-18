@@ -9,8 +9,7 @@ signal combo_incremented()
 onready var weapon = get_node(GDWeaponsWeapon.WEAPON_PATH_FROM_COMPONENT)
 onready var reset_combo_timer = get_node("Timer")
 
-export var combo_json = ""
-
+#overwrite this with your own data, and apply it in apply_combo_data
 var combo_data = [
 	{"wait": 2},
 	{"wait": 1.5},
@@ -22,8 +21,6 @@ var current_combo_attack = 0
 func _ready():
 	weapon.connect("began",self,"increment_combo")
 	reset_combo_timer.connect("timeout",self,"combo_timed_out")
-	if combo_json != "":
-		pass #load JSON
 	
 func increment_combo():
 	var combo = combo_data[current_combo_attack]

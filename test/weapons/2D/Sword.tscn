@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/Weapon2D.tscn" type="PackedScene" id=1]
+[ext_resource path="res://test/assets/gun.png" type="Texture" id=2]
+[ext_resource path="res://src/Components/AutoAttack/AutoAttack.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Cooldown"
+length = 0.5
+tracks/0/type = "method"
+tracks/0/path = NodePath("FiringCooldown")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "end_action"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Fire"
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "end_attack"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 90.0, 0.0 ]
+}
+
+[node name="Sword" index="0" instance=ExtResource( 1 )]
+position = Vector2( 200, 200 )
+
+[node name="Sprite" type="Sprite" parent="." index="1"]
+position = Vector2( 0, -20 )
+texture = ExtResource( 2 )
+
+[node name="AutoAttack" parent="." index="2" instance=ExtResource( 3 )]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+anims/Cooldown = SubResource( 1 )
+anims/Fire = SubResource( 2 )
+[connection signal="began" from="." to="AnimationPlayer" method="play" binds= [ "Fire" ]]
+[connection signal="began" from="FiringCooldown" to="AnimationPlayer" method="play" binds= [ "Cooldown" ]]

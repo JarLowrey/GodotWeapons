@@ -11,7 +11,6 @@
 [node name="Timer" type="Timer" parent="FiringCooldown" index="0"]
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
-position = Vector2( 399, 302 )
 texture = ExtResource( 2 )
 
 [node name="BulletSpawner2D" parent="." index="2" instance=ExtResource( 3 )]
