@@ -5,7 +5,5 @@
 
 [node name="Weapon2D" type="Node2D"]
 script = ExtResource( 1 )
-cooldown_delay = null
-timer_path = null
 
 [node name="FiringCooldown" parent="." instance=ExtResource( 2 )]

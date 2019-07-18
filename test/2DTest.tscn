@@ -5,3 +5,4 @@
 [node name="2DTest" type="Node2D"]
 
 [node name="Sword" parent="." instance=ExtResource( 1 )]
+position = Vector2( 200, 200 )
