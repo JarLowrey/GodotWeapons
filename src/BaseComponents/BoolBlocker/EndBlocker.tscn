@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://src/Components/BoolBlocker/EndBlocker.gd" type="Script" id=1]
+[ext_resource path="res://src/BaseComponents/BoolBlocker/EndBlocker.gd" type="Script" id=1]
+
 
 [node name="EndBlocker" type="Node"]
 script = ExtResource( 1 )

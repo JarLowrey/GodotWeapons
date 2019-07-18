@@ -2,7 +2,8 @@
 
 [ext_resource path="res://src/Weapon2D.tscn" type="PackedScene" id=1]
 [ext_resource path="res://test/assets/gun.png" type="Texture" id=2]
-[ext_resource path="res://src/Components/AutoAttack/AutoAttack.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/BaseComponents/AutoAttack/AutoAttack.tscn" type="PackedScene" id=3]
+
 
 [sub_resource type="Animation" id=4]
 resource_name = "Cooldown"
