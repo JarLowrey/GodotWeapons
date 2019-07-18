@@ -65,7 +65,7 @@ tracks/1/keys = {
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 9.19623, 25.3704 )
 
-[node name="Sword" index="0" instance=ExtResource( 1 )]
+[node name="Sword" instance=ExtResource( 1 )]
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
 position = Vector2( 0, -20 )
