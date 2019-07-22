@@ -8,7 +8,7 @@ export_presets.cfg
 logs/
 .import/* 
 *.zip
-*.pck
+*.pck 
 exports/*
 
 # Mono-specific ignores

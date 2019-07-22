@@ -1,6 +1,6 @@
 ## Weapon Plugin for Godot
 
-Weapon bootstrapping in Godot 3.1.
+Weapon bootstrapping in Godot 3.1, written in GDScript.
 
 ### What is a weapon?
 
@@ -33,8 +33,7 @@ These components should work no matter your weapon-specific implementation
 
 ### Common Components
 
-These components are dependent on further developer implementation
-At the very least they can serve as a starting point for your specific implementation.
+These components are require further scripting to customize them to your weapon-specific implementation.
 
 - Burst: changes multiple attacks into a single atomic attack. Will stop partway through if gun cannot fire (ran out of ammo etc). Relies on developer to implement different cooldown times for burst and non-burst attacks.
 - Recoil: bounce the weapon after shooting
