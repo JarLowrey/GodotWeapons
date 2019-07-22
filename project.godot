@@ -44,11 +44,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/BaseComponents/Combo/Combo.gd"
 }, {
-"base": "GDWeaponsLongAction",
-"class": "GDWeaponsCooldownAction",
-"language": "GDScript",
-"path": "res://src/Util/CooldownAction/CooldownAction.gd"
-}, {
 "base": "GDWeaponsBoolBlocker",
 "class": "GDWeaponsEndBlocker",
 "language": "GDScript",
@@ -92,7 +87,6 @@ _global_script_class_icons={
 "GDWeaponsBurst": "",
 "GDWeaponsCapacity": "",
 "GDWeaponsCombo": "",
-"GDWeaponsCooldownAction": "",
 "GDWeaponsEndBlocker": "",
 "GDWeaponsLongAction": "",
 "GDWeaponsMagCapacity": "",

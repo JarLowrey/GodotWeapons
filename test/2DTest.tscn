@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://test/weapons/2D/AutoGun.tscn" type="PackedScene" id=1]
+[ext_resource path="res://test/weapons/2D/BurstAmmoGun.tscn" type="PackedScene" id=1]
 
 [node name="2DTest" type="Node2D"]
 
-[node name="AutoAttackingGun" parent="." instance=ExtResource( 1 )]
-position = Vector2( 413, 335 )
+[node name="BurstGun" parent="." instance=ExtResource( 1 )]
+position = Vector2( 207, 161 )

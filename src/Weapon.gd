@@ -4,11 +4,10 @@ class_name GDWeaponsWeapon
 
 const WEAPON_PATH_FROM_COMPONENT = ".."
 
-# act as controller/coordinator - get all the paths to other nodes
+# act as controller/coordinator
 
-onready var charge = get_node("Charge") if has_node("Charge") else null
-onready var burst = get_node("Burst") if has_node("Burst") else null
-onready var magazine = get_node("Magazine") if has_node("Magazine") else null
+func _ready():
+	add_action_to_interupt_start($FiringCooldown)
 
 func start_attack():
 	.start_action()
