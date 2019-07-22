@@ -42,7 +42,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "GDWeaponsCombo",
 "language": "GDScript",
-"path": "res://src/BaseComponents/Combo/Combo.gd"
+"path": "res://src/CommonComponents/Combo/Combo.gd"
 }, {
 "base": "GDWeaponsBoolBlocker",
 "class": "GDWeaponsEndBlocker",

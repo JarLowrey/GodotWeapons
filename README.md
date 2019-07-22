@@ -28,13 +28,13 @@ These components should work no matter your weapon-specific implementation
 - StartBlocker: conditions/trigger to start action
 - EndBlocker: conditions/trigger to end action (useful for a charged weapon with a manual release)
 - BulletSpawner: for instancing scenes on weapon state change
-- Combo: change weapon data (animation played, cooldown delay, etc) if it is used quickly enough
-- Magazine (includes reload action): a magazine. Customize the Capacity and LongAction children nodes to get this working.]
+- Magazine (includes reload action): a magazine. Must make children editable to customize via the Capacity and LongAction children nodes.
 
 ### Common Components
 
 These components are require further scripting to customize them to your weapon-specific implementation.
 
+- Combo: change weapon data (animation played, cooldown delay, etc) if it is used quickly enough
 - Burst: changes multiple attacks into a single atomic attack. Will stop partway through if gun cannot fire (ran out of ammo etc). Relies on developer to implement different cooldown times for burst and non-burst attacks.
 - Recoil: bounce the weapon after shooting
 

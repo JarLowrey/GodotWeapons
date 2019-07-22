@@ -4,7 +4,8 @@
 [ext_resource path="res://test/assets/gun.png" type="Texture" id=2]
 [ext_resource path="res://src/BaseComponents/AutoAttack/AutoAttack.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/BaseComponents/BulletSpawner/BulletSpawner.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/BaseComponents/Combo/Combo.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/CommonComponents/Combo/Combo.tscn" type="PackedScene" id=5]
+
 
 
 [node name="ComboGun" instance=ExtResource( 1 )]

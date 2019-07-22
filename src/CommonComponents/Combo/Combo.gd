@@ -24,7 +24,8 @@ func _ready():
 	
 func increment_combo():
 	var combo = combo_data[current_combo_attack]
-	
+	print("current step in combo: ")
+	print(current_combo_attack)
 	apply_combo_data(combo)
 	reset_combo_timer.start()
 	
