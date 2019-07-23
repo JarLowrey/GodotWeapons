@@ -18,6 +18,12 @@ var combo_data = [
 
 var current_combo_attack = 0
 
+func apply_combo_data(combo): # IMPLEMENT ME
+	if 'wait' in combo:
+		reset_combo_timer.wait_time = combo['wait']
+
+
+
 func _ready():
 	weapon.connect("began",self,"increment_combo")
 	reset_combo_timer.connect("timeout",self,"combo_timed_out")
@@ -38,10 +44,6 @@ func increment_combo():
 
 func can_increment():
 	return current_combo_attack < combo_data.size() - 1
-
-func apply_combo_data(combo):
-	if 'wait' in combo:
-		reset_combo_timer.wait_time = combo['wait']
 	
 func reset_combo():
 	current_combo_attack = 0
