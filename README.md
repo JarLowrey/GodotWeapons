@@ -25,10 +25,10 @@ These components will work immediately.
 
 - Ammo: Disables the gun when the capacity drops to zero. Could also work as Stamina
 - Charge: Disables the weapon when capacity is less than Max_Capaciy. 
-- AutoAttack: auto starts actions on successly finishing
+- AutoAttack: auto starts the attack upon entering the tree. Restarts the attack once it finished successfully
 - StartBlocker: conditions/trigger to start action
 - EndBlocker: conditions/trigger to end action (useful for a charged weapon with a manual release)
-- BulletSpawner: for instancing scenes on weapon state change
+- BulletSpawner: for instancing scenes on weapon state change. For a bullet hell or intensive application, this should be refactored to pull from an object pool.
 - Magazine (includes reload action): a magazine. Must make children editable to customize via the Capacity and LongAction children nodes.
 
 ### Common Components
