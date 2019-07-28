@@ -9,11 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "GDWeaponsCapacity",
-"class": "GDWeaponsAmmo",
-"language": "GDScript",
-"path": "res://src/BaseComponents/Ammo/Ammo.gd"
-}, {
 "base": "Node",
 "class": "GDWeaponsAutoAttack",
 "language": "GDScript",
@@ -38,6 +33,11 @@ _global_script_classes=[ {
 "class": "GDWeaponsCapacity",
 "language": "GDScript",
 "path": "res://src/Util/Capacity/Capacity.gd"
+}, {
+"base": "GDWeaponsCapacity",
+"class": "GDWeaponsCharge",
+"language": "GDScript",
+"path": "res://src/BaseComponents/Charge/Charge.gd"
 }, {
 "base": "Node",
 "class": "GDWeaponsCombo",
@@ -80,12 +80,12 @@ _global_script_classes=[ {
 "path": "res://src/Weapon.gd"
 } ]
 _global_script_class_icons={
-"GDWeaponsAmmo": "",
 "GDWeaponsAutoAttack": "",
 "GDWeaponsBoolBlocker": "",
 "GDWeaponsBulletSpawner": "",
 "GDWeaponsBurst": "",
 "GDWeaponsCapacity": "",
+"GDWeaponsCharge": "",
 "GDWeaponsCombo": "",
 "GDWeaponsEndBlocker": "",
 "GDWeaponsLongAction": "",
