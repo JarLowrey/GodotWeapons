@@ -43,7 +43,7 @@ These components require further scripting to customize them to your weapon-spec
 ### Util
 
 - Capacity: Parent class for Ammo, Charge, MagCapacity, and others. Has a min, max, and step (for easy increment/decrement).
--LongAction: Base class for attacking and cooldowns. Leaves implementation up to developer but allows the components to interact predictably
+- LongAction: Base class for attacking and cooldowns. Leaves implementation up to developer but allows the components to interact predictably
 
 ### Notes
 
