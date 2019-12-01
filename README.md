@@ -1,3 +1,5 @@
+# [Quick Start Video](https://www.youtube.com/watch?v=cn7U2l9FllY&feature=youtu.be)
+
 ## Weapon Plugin for Godot
 
 Weapon bootstrapping in Godot 3.1, written in GDScript.
@@ -18,9 +20,6 @@ This action may end immediately, after a time period, through an animation, or h
 
 Components can be added as direct children to modify the action's ability to start or end, and may have further customization options in the editor.
 This project aims to cover most common component needs, but you can extend them or add your own if you like.
-
-### Bootstrap [click here](https://www.youtube.com/watch?v=cn7U2l9FllY&feature=youtu.be)
-
 
 ### Base components
 
