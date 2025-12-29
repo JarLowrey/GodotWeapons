@@ -1,0 +1,9 @@
+res://default_env.tres
+res://test/2d_test.tscn
+res://src/BaseComponents/BulletSpawner.gd
+res://src/Util/Capacity.gd
+res://src/BaseComponents/Ammo.gd
+res://src/Util/LongAction.gd
+res://src/weapon.gd
+res://src/BaseComponents/AutoAttack.gd
+res://test/bullets/SimpleBullet.tscn

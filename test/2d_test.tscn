@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjuagdu8uk1ve"]
+
+[ext_resource type="Texture2D" uid="uid://dsrfhpmxbw3hh" path="res://test/assets/gun.png" id="1_ckt1l"]
+[ext_resource type="Script" uid="uid://xgslgu1xtxhi" path="res://src/weapon.gd" id="1_ng12k"]
+[ext_resource type="Script" uid="uid://cthc4i1nxpm3n" path="res://src/BaseComponents/AutoAttack.gd" id="3_we36y"]
+[ext_resource type="Script" uid="uid://002caarwmttt" path="res://src/BaseComponents/BulletSpawner.gd" id="4_ipj6c"]
+[ext_resource type="Script" uid="uid://cmvtu8v4f56kd" path="res://src/BaseComponents/Ammo.gd" id="5_15e0l"]
+
+[node name="2dTest" type="Node2D"]
+
+[node name="Weapon" type="Sprite2D" parent="." node_paths=PackedStringArray("ammo", "auto_attack", "bullet_spawner")]
+position = Vector2(537, 334)
+texture = ExtResource("1_ckt1l")
+script = ExtResource("1_ng12k")
+ammo = NodePath("GDWeaponsAmmo")
+auto_attack = NodePath("GDWeaponsAutoAttack")
+bullet_spawner = NodePath("GDWeaponsBulletSpawner")
+
+[node name="GDWeaponsAutoAttack" type="Node" parent="Weapon"]
+script = ExtResource("3_we36y")
+metadata/_custom_type_script = "uid://cthc4i1nxpm3n"
+
+[node name="GDWeaponsBulletSpawner" type="Node" parent="Weapon"]
+script = ExtResource("4_ipj6c")
+metadata/_custom_type_script = "uid://002caarwmttt"
+
+[node name="GDWeaponsAmmo" type="Node" parent="Weapon"]
+script = ExtResource("5_15e0l")
+max_capacity = 4
+metadata/_custom_type_script = "uid://cmvtu8v4f56kd"
+
+[node name="PostShotWaitTimer" type="Timer" parent="Weapon"]
+one_shot = true
+
+[connection signal="began" from="Weapon" to="Weapon" method="end_attack"]
+[connection signal="ended" from="Weapon" to="Weapon/PostShotWaitTimer" method="start"]
+[connection signal="timeout" from="Weapon/PostShotWaitTimer" to="Weapon" method="start_attack"]

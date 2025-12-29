@@ -6,101 +6,14 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
-
-_global_script_classes=[ {
-"base": "Node",
-"class": "GDWeaponsAutoAttack",
-"language": "GDScript",
-"path": "res://src/BaseComponents/AutoAttack/AutoAttack.gd"
-}, {
-"base": "Node",
-"class": "GDWeaponsBoolBlocker",
-"language": "GDScript",
-"path": "res://src/BaseComponents/BoolBlocker/BoolBlocker.gd"
-}, {
-"base": "Node",
-"class": "GDWeaponsBulletSpawner",
-"language": "GDScript",
-"path": "res://src/BaseComponents/BulletSpawner/BulletSpawner.gd"
-}, {
-"base": "Node",
-"class": "GDWeaponsBurst",
-"language": "GDScript",
-"path": "res://src/CommonComponents/Burst/Burst.gd"
-}, {
-"base": "Node",
-"class": "GDWeaponsCapacity",
-"language": "GDScript",
-"path": "res://src/Util/Capacity/Capacity.gd"
-}, {
-"base": "GDWeaponsCapacity",
-"class": "GDWeaponsCharge",
-"language": "GDScript",
-"path": "res://src/BaseComponents/Charge/Charge.gd"
-}, {
-"base": "Node",
-"class": "GDWeaponsCombo",
-"language": "GDScript",
-"path": "res://src/CommonComponents/Combo/Combo.gd"
-}, {
-"base": "GDWeaponsBoolBlocker",
-"class": "GDWeaponsEndBlocker",
-"language": "GDScript",
-"path": "res://src/BaseComponents/BoolBlocker/EndBlocker.gd"
-}, {
-"base": "Node",
-"class": "GDWeaponsLongAction",
-"language": "GDScript",
-"path": "res://src/Util/LongAction/LongAction.gd"
-}, {
-"base": "GDWeaponsCapacity",
-"class": "GDWeaponsMagCapacity",
-"language": "GDScript",
-"path": "res://src/BaseComponents/Magazine/MagCapacity.gd"
-}, {
-"base": "Node",
-"class": "GDWeaponsMagazine",
-"language": "GDScript",
-"path": "res://src/BaseComponents/Magazine/Magazine.gd"
-}, {
-"base": "Node",
-"class": "GDWeaponsRecoil",
-"language": "GDScript",
-"path": "res://src/CommonComponents/Recoil/Recoil.gd"
-}, {
-"base": "GDWeaponsBoolBlocker",
-"class": "GDWeaponsStartBlocker",
-"language": "GDScript",
-"path": "res://src/BaseComponents/BoolBlocker/StartBlocker.gd"
-}, {
-"base": "GDWeaponsLongAction",
-"class": "GDWeaponsWeapon",
-"language": "GDScript",
-"path": "res://src/Weapon.gd"
-} ]
-_global_script_class_icons={
-"GDWeaponsAutoAttack": "",
-"GDWeaponsBoolBlocker": "",
-"GDWeaponsBulletSpawner": "",
-"GDWeaponsBurst": "",
-"GDWeaponsCapacity": "",
-"GDWeaponsCharge": "",
-"GDWeaponsCombo": "",
-"GDWeaponsEndBlocker": "",
-"GDWeaponsLongAction": "",
-"GDWeaponsMagCapacity": "",
-"GDWeaponsMagazine": "",
-"GDWeaponsRecoil": "",
-"GDWeaponsStartBlocker": "",
-"GDWeaponsWeapon": ""
-}
+config_version=5
 
 [application]
 
 config/name="GodotWeapons"
-run/main_scene="res://test/2DTest.tscn"
+run/main_scene="uid://cjuagdu8uk1ve"
+config/features=PackedStringArray("4.5")
 
 [rendering]
 
-environment/default_environment="res://default_env.tres"
+environment/defaults/default_environment="res://default_env.tres"
