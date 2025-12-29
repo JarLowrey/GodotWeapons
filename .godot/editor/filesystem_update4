@@ -7,3 +7,4 @@ res://src/Util/LongAction.gd
 res://src/weapon.gd
 res://src/BaseComponents/AutoAttack.gd
 res://test/bullets/SimpleBullet.tscn
+res://README.md
